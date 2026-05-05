@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camille — Assistante de Direction · Toulouse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   TOKENS
+───────────────────────────────────────── */
+:root {
+  --parch:   #F5F0E8;   /* beige parchemin — fond principal */
+  --sand:    #EAE3D5;   /* sable — sections alternées       */
+  --linen:   #DDD5C4;   /* lin — bordures, séparateurs      */
+  --stone:   #A89880;   /* pierre — texte secondaire        */
+  --bark:    #5C4F3D;   /* écorce — texte corps             */
+  --ink:     #1A1410;   /* encre — noir chaud               */
+  --white:   #FDFCF9;   /* blanc cassé                      */
+}
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Instrument Sans',sans-serif;
+  background:var(--parch);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 52px;height:66px;
+  transition:background .4s,border-color .4s;
+}
+nav.pinned{
+  background:rgba(245,240,232,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--linen);
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--ink);text-decoration:none;
+}
+.logo-sub{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:.6rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--stone);display:block;margin-top:-2px;
+}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center}
+.nav-links a{
+  font-size:.73rem;font-weight:400;
+  letter-spacing:.13em;text-transform:uppercase;
+  color:var(--stone);text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  font-family:'Instrument Sans',sans-serif;
+  font-size:.72rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;
+  color:var(--white);background:var(--ink);
+  padding:10px 24px;
+  border:1.5px solid var(--ink);
+  transition:all .25s;
+}
+.nav-cta:hover{background:transparent;color:var(--ink)}
+
+/* ─────────────────────────────────────────
+   HERO — ÉDITORIAL
+───────────────────────────────────────── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding-top:66px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Numéro de volume éditorial */
+.hero-vol{
+  position:absolute;top:90px;right:52px;
+  text-align:right;
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--linen);
+  line-height:1.8;
+}
+
+/* Grand titre éditorial */
+.hero-main{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 52px 0;
+  position:relative;
+}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.65rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--stone);margin-bottom:28px;
+  animation:fadeUp .7s .2s ease both;
+}
+.hero-tag::before{content:'';width:28px;height:1px;background:var(--linen)}
+
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(4rem,9vw,9.5rem);
+  font-weight:900;line-height:.9;
+  letter-spacing:-.03em;
+  color:var(--ink);
+  animation:fadeUp .8s .35s ease both;
+}
+.hero-h1 .italic{font-style:italic;font-weight:400;color:var(--stone)}
+.hero-h1 .block{display:block}
+
+/* Ligne horizontale éditoriale */
+.hero-rule{
+  width:100%;height:1px;
+  background:var(--linen);
+  margin:40px 0;
+  animation:scaleX .8s .7s ease both;
+  transform-origin:left;
+}
+@keyframes scaleX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* Bande basse du hero */
+.hero-bottom{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:40px;align-items:end;
+  padding:0 52px 60px;
+  animation:fadeUp .8s .8s ease both;
+}
+.hero-desc{
+  font-size:.95rem;font-weight:300;line-height:1.8;
+  color:var(--stone);max-width:380px;
+}
+.hero-center-num{
+  font-family:'Playfair Display',serif;
+  font-size:6rem;font-weight:900;
+  color:var(--linen);line-height:1;
+  letter-spacing:-.04em;
+  text-align:center;
+}
+.hero-ctas{
+  display:flex;flex-direction:column;gap:10px;
+  align-items:flex-end;
+}
+.btn-ink{
+  display:inline-block;
+  font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;
+  color:var(--white);background:var(--ink);
+  padding:13px 28px;border:1.5px solid var(--ink);
+  transition:all .25s;
+}
+.btn-ink:hover{background:transparent;color:var(--ink)}
+.btn-line{
+  display:inline-block;
+  font-size:.73rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--bark);
+  padding:13px 28px;border:1.5px solid var(--linen);
+  transition:all .25s;
+}
+.btn-line:hover{border-color:var(--bark);color:var(--ink)}
+
+/* Ticker bas de hero */
+.hero-ticker{
+  background:var(--ink);
+  padding:14px 52px;
+  display:flex;align-items:center;gap:0;
+  overflow:hidden;
+}
+.ticker-track{
+  display:flex;gap:0;
+  animation:tickerMove 18s linear infinite;
+  white-space:nowrap;
+}
+.ticker-item{
+  font-size:.7rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(253,252,249,.4);
+  padding:0 40px;
+  border-right:1px solid rgba(253,252,249,.1);
+  flex-shrink:0;
+}
+@keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─────────────────────────────────────────
+   SECTION HELPERS
+───────────────────────────────────────── */
+.s{padding:100px 52px}
+.s-sand{background:var(--sand)}
+.s-ink{background:var(--ink)}
+.s-white{background:var(--white)}
+
+.eyebrow{
+  font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--stone);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--linen)}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4.5vw,4rem);
+  font-weight:700;line-height:1.05;
+  letter-spacing:-.025em;
+  color:var(--ink);
+  margin-bottom:24px;
+}
+h2 em{font-style:italic;font-weight:400;color:var(--stone)}
+h2.light{color:var(--white)}
+h2.light em{color:var(--linen)}
+
+.body{
+  font-size:.95rem;font-weight:300;line-height:1.85;
+  color:var(--stone);
+}
+.body strong{color:var(--bark);font-weight:500}
+
+/* ─────────────────────────────────────────
+   ABOUT — ÉDITORIAL MAGAZINE
+───────────────────────────────────────── */
+#about{
+  display:grid;
+  grid-template-columns:1fr 2px 1fr;
+  gap:0;min-height:80vh;
+}
+.about-left{
+  padding:100px 64px 100px 52px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:2px solid var(--linen);
+}
+.about-divider{background:var(--linen)}
+.about-right{
+  position:relative;overflow:hidden;
+}
+.about-photo{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=85&auto=format&fit=crop&sat=-20');
+  background-size:cover;background-position:center top;
+  filter:sepia(15%) contrast(1.05);
+  transition:transform 8s ease;
+}
+.about-photo:hover{transform:scale(1.03)}
+.about-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(26,20,16,.75) 0%, rgba(26,20,16,.1) 55%, transparent 100%);
+}
+.about-caption{
+  position:absolute;bottom:48px;left:48px;right:48px;
+}
+.about-caption-name{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;font-weight:700;font-style:italic;
+  color:var(--white);line-height:1;margin-bottom:8px;
+}
+.about-caption-role{
+  font-size:.68rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(253,252,249,.5);
+}
+
+.about-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--linen);
+  margin-top:48px;
+}
+.stat{
+  background:var(--parch);
+  padding:24px 0;text-align:center;
+}
+.stat-n{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:900;
+  color:var(--ink);line-height:1;
+  letter-spacing:-.04em;
+}
+.stat-l{
+  font-size:.62rem;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--stone);margin-top:4px;
+}
+
+.pillars{display:flex;flex-direction:column;gap:1px;margin-top:32px;border:1px solid var(--linen)}
+.pillar{
+  padding:20px 24px;
+  border-bottom:1px solid var(--linen);
+  transition:background .25s;
+}
+.pillar:last-child{border-bottom:none}
+.pillar:hover{background:var(--sand)}
+.pillar-n{font-family:'Playfair Display',serif;font-size:.75rem;color:var(--linen);letter-spacing:.1em;margin-bottom:6px}
+.pillar-t{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.pillar-d{font-size:.78rem;font-weight:300;color:var(--stone);line-height:1.5}
+
+/* ─────────────────────────────────────────
+   PRESTATIONS — GRILLE MAGAZINE
+───────────────────────────────────────── */
+#prestations{background:var(--white)}
+.services-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:end;
+  margin-bottom:64px;
+  padding-bottom:48px;
+  border-bottom:1px solid var(--linen);
+}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--linen);
+}
+.svc{
+  background:var(--white);
+  padding:48px 36px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+}
+.svc::after{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--ink);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.svc:hover{background:var(--parch)}
+.svc:hover::after{transform:scaleX(1)}
+
+.svc-img{
+  width:100%;height:160px;object-fit:cover;
+  margin-bottom:28px;
+  filter:sepia(20%) contrast(1.05) saturate(.9);
+  transition:filter .4s;
+}
+.svc:hover .svc-img{filter:sepia(5%) contrast(1.08)}
+
+.svc-idx{
+  font-family:'Playfair Display',serif;
+  font-size:4.5rem;font-weight:900;
+  color:var(--linen);line-height:1;
+  letter-spacing:-.05em;margin-bottom:16px;
+}
+.svc-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--ink);margin-bottom:12px;
+  letter-spacing:-.01em;
+}
+.svc-desc{
+  font-size:.85rem;font-weight:300;line-height:1.8;
+  color:var(--stone);margin-bottom:24px;flex:1;
+}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.svc-list li{
+  font-size:.8rem;color:var(--bark);
+  padding:6px 0 6px 14px;position:relative;
+  border-bottom:1px solid var(--sand);line-height:1.5;
+}
+.svc-list li:last-child{border-bottom:none}
+.svc-list li::before{content:'–';position:absolute;left:0;color:var(--linen)}
+
+/* ─────────────────────────────────────────
+   PHOTO BANDE — PARALLAXE
+───────────────────────────────────────── */
+#band{
+  height:55vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;
+}
+.band-bg{
+  position:absolute;inset:-60px;
+  background-image:url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1800&q=80&auto=format&fit=crop');
+  background-size:cover;background-position:center;
+  filter:sepia(25%) contrast(1.1) saturate(.8);
+  will-change:transform;
+}
+.band-overlay{
+  position:absolute;inset:0;
+  background:rgba(26,20,16,.72);
+}
+.band-content{
+  position:relative;z-index:2;
+  padding:0 52px;
+  max-width:780px;
+}
+.band-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3.2rem);
+  font-weight:400;font-style:italic;
+  line-height:1.25;color:var(--white);
+  margin-bottom:24px;
+}
+.band-quote strong{font-weight:700;font-style:normal}
+.band-attr{
+  font-size:.68rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(253,252,249,.35);
+}
+
+/* ─────────────────────────────────────────
+   IA — SOMBRE ÉDITORIAL
+───────────────────────────────────────── */
+#ia{
+  background:var(--ink);
+  display:grid;grid-template-columns:1fr 1px 1fr;
+  min-height:70vh;
+}
+.ia-left{padding:100px 80px 100px 52px}
+.ia-div{background:rgba(255,255,255,.06)}
+.ia-right{padding:100px 52px 100px 80px;display:flex;flex-direction:column;justify-content:center}
+
+#ia .eyebrow{color:rgba(253,252,249,.25)}
+#ia .eyebrow::before{background:rgba(253,252,249,.12)}
+
+.ia-steps{display:flex;flex-direction:column;margin-top:32px}
+.ia-step{
+  display:flex;gap:20px;
+  padding:24px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  transition:padding-left .3s;
+}
+.ia-step:last-child{border-bottom:none}
+.ia-step:hover{padding-left:8px}
+.ia-sn{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:900;
+  color:rgba(255,255,255,.07);min-width:32px;line-height:1;
+}
+.ia-st{font-size:.92rem;font-weight:500;color:var(--white);margin-bottom:5px}
+.ia-sd{font-size:.82rem;font-weight:300;color:rgba(253,252,249,.35);line-height:1.6}
+
+.ia-metrics{display:flex;flex-direction:column;gap:1px}
+.ia-m{
+  background:rgba(255,255,255,.03);
+  padding:22px 28px;
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .25s;border-left:2px solid transparent;
+}
+.ia-m:hover{background:rgba(255,255,255,.06);border-left-color:var(--stone)}
+.ia-ml{font-size:.78rem;font-weight:300;color:rgba(253,252,249,.35)}
+.ia-mv{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:700;
+  color:var(--white);letter-spacing:-.03em;
+}
+.ia-mv span{font-size:.72rem;font-weight:300;color:rgba(253,252,249,.3);margin-left:3px}
+
+.ia-photo{
+  width:100%;height:220px;object-fit:cover;
+  margin-bottom:2px;
+  filter:sepia(30%) contrast(1.05) saturate(.7);
+}
+
+/* ─────────────────────────────────────────
+   CTA BAND
+───────────────────────────────────────── */
+#cta-strip{
+  background:var(--sand);
+  padding:80px 52px;
+  display:flex;align-items:center;justify-content:space-between;gap:60px;
+  border-top:1px solid var(--linen);
+  border-bottom:1px solid var(--linen);
+}
+.cta-txt{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.8rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-.02em;color:var(--ink);
+}
+.cta-txt em{font-style:italic;font-weight:400;color:var(--stone)}
+
+/* ─────────────────────────────────────────
+   CONTACT
+───────────────────────────────────────── */
+#contact{background:var(--parch)}
+.contact-grid{display:grid;grid-template-columns:1fr 1px 1.2fr;gap:0;align-items:start}
+.contact-left{padding:0 80px 0 0;border-right:1px solid var(--linen)}
+.contact-div{background:var(--linen)}
+.contact-right{padding:0 0 0 80px}
+
+.ci-rows{display:flex;flex-direction:column;margin-top:8px}
+.ci-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 0;border-bottom:1px solid var(--linen);
+}
+.ci-row:last-child{border-bottom:none}
+.ci-l{font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.ci-v{font-size:.88rem;font-weight:300;color:var(--bark)}
+
+.promise{
+  margin-top:36px;padding:28px 30px;
+  background:var(--ink);
+}
+.promise-t{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px;
+}
+.promise-d{font-size:.82rem;font-weight:300;color:rgba(253,252,249,.4);line-height:1.7}
+
+.contact-form{display:flex;flex-direction:column;gap:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ff{display:flex;flex-direction:column;gap:6px}
+.ff label{
+  font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--stone);
+}
+.ff input,.ff textarea,.ff select{
+  background:var(--white);
+  border:1.5px solid var(--linen);
+  color:var(--ink);
+  padding:13px 16px;
+  font-family:'Instrument Sans',sans-serif;font-size:.88rem;font-weight:300;
+  outline:none;transition:border-color .25s;-webkit-appearance:none;appearance:none;
+}
+.ff input:focus,.ff textarea:focus,.ff select:focus{border-color:var(--bark)}
+.ff input::placeholder,.ff textarea::placeholder{color:var(--linen)}
+.ff textarea{resize:vertical;min-height:90px}
+.ff select option{background:var(--white)}
+.btn-submit{
+  background:var(--ink);color:var(--white);
+  padding:15px 32px;
+  font-family:'Instrument Sans',sans-serif;
+  font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  border:1.5px solid var(--ink);cursor:pointer;
+  transition:all .25s;margin-top:6px;width:100%;
+}
+.btn-submit:hover{background:transparent;color:var(--ink)}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer{
+  background:var(--ink);
+  padding:36px 52px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.f-logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:700;color:rgba(253,252,249,.3);
+}
+.f-links{display:flex;gap:28px}
+.f-links a{
+  font-size:.65rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(253,252,249,.2);text-decoration:none;transition:color .2s;
+}
+.f-links a:hover{color:rgba(253,252,249,.5)}
+.f-copy{font-size:.65rem;color:rgba(253,252,249,.15);letter-spacing:.06em}
+
+/* ─────────────────────────────────────────
+   REVEAL ANIMATIONS
+───────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.4,0,.2,1),transform .85s cubic-bezier(.4,0,.2,1)}
+.reveal.on{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .8s .1s ease,transform .8s .1s ease}
+.reveal-l.on{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .8s .15s ease,transform .8s .15s ease}
+.reveal-r.on{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.stagger.on>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+.stagger.on>*:nth-child(2){opacity:1;transform:none;transition-delay:.18s}
+.stagger.on>*:nth-child(3){opacity:1;transform:none;transition-delay:.31s}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:1024px){
+  nav{padding:0 32px}
+  .s,.hero-main,.hero-bottom,#band .band-content,footer,#cta-strip{padding-left:32px;padding-right:32px}
+  #about,#ia,#contact{grid-template-columns:1fr;gap:0}
+  .about-divider,.ia-div,.contact-div{display:none}
+  .about-left{border-right:none;border-bottom:1px solid var(--linen);padding:72px 32px}
+  .about-right{height:60vw;min-height:320px;position:relative}
+  .ia-left,.ia-right{padding:72px 32px}
+  .contact-left{border-right:none;border-bottom:1px solid var(--linen);padding:0 0 48px}
+  .contact-right{padding:48px 0 0}
+  .services-grid,.hero-bottom{grid-template-columns:1fr;gap:32px}
+  .services-header{grid-template-columns:1fr}
+  .hero-center-num{display:none}
+  .hero-ctas{align-items:flex-start}
+}
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .hero-h1{font-size:3.5rem}
+  .s{padding:64px 24px}
+  .hero-main{padding:40px 24px 0}
+  .hero-bottom{padding:0 24px 48px}
+  #cta-strip{flex-direction:column;gap:28px;align-items:flex-start}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:28px 24px}
+  .f-links{flex-wrap:wrap;justify-content:center}
+  .form-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">
+    Camille
+    <span class="logo-sub">Assistante de Direction</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#ia">IA & Entreprises</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Me contacter</a>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-vol">
+    Toulouse · 2026<br>
+    Freelance · Vol. I
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-tag">Assistante de Direction Freelance · Toulouse</div>
+    <h1 class="hero-h1">
+      <span class="block">L'expertise</span>
+      <span class="block italic">qui vous</span>
+      <span class="block">libère.</span>
+    </h1>
+    <div class="hero-rule"></div>
+  </div>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      RH, comptabilité, exploitation — et accompagnement IA. Je prends en charge votre back-office avec la connaissance du secteur propreté et services.
+    </p>
+    <div class="hero-center-num">03</div>
+    <div class="hero-ctas">
+      <a href="#prestations" class="btn-ink">Voir les prestations</a>
+      <a href="#contact" class="btn-line">Prendre contact</a>
+    </div>
+  </div>
+
+  <!-- Ticker -->
+  <div class="hero-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">Gestion RH</span>
+      <span class="ticker-item">Paie Silae</span>
+      <span class="ticker-item">CCN Propreté</span>
+      <span class="ticker-item">Chorus Pro</span>
+      <span class="ticker-item">Accompagnement IA</span>
+      <span class="ticker-item">Rapprochement bancaire</span>
+      <span class="ticker-item">Planning & Exploitation</span>
+      <span class="ticker-item">Relances clients</span>
+      <span class="ticker-item">Toulouse & périphérie</span>
+      <span class="ticker-item">Freelance · Disponible</span>
+      <!-- dupliqué pour boucle -->
+      <span class="ticker-item">Gestion RH</span>
+      <span class="ticker-item">Paie Silae</span>
+      <span class="ticker-item">CCN Propreté</span>
+      <span class="ticker-item">Chorus Pro</span>
+      <span class="ticker-item">Accompagnement IA</span>
+      <span class="ticker-item">Rapprochement bancaire</span>
+      <span class="ticker-item">Planning & Exploitation</span>
+      <span class="ticker-item">Relances clients</span>
+      <span class="ticker-item">Toulouse & périphérie</span>
+      <span class="ticker-item">Freelance · Disponible</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="about-left reveal-l">
+    <div class="eyebrow">À propos</div>
+    <h2>Une expertise<br><em>terrain.</em></h2>
+    <p class="body" style="margin-top:8px">
+      Avec <strong>2 ans d'expérience dans la propreté industrielle</strong>, je connais votre réalité de l'intérieur : la convention collective, les plannings contraints, les exigences du donneur d'ordre et la pression du quotidien.
+    </p>
+    <p class="body" style="margin-top:16px">
+      Je propose un <strong>accompagnement direct, sans intermédiaire</strong> — centré sur ce dont vous avez vraiment besoin. Et j'aide les entreprises qui le souhaitent à <strong>intégrer l'IA</strong> dans leurs process.
+    </p>
+
+    <div class="about-stats">
+      <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Ans exp.</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Pôles</div></div>
+      <div class="stat"><div class="stat-n">48h</div><div class="stat-l">Réponse</div></div>
+    </div>
+
+    <div class="pillars" style="margin-top:32px">
+      <div class="pillar"><div class="pillar-n">01</div><div class="pillar-t">Spécialiste propreté & services</div><div class="pillar-d">CCN, Silae, Chorus Pro — opérationnelle dès J+1.</div></div>
+      <div class="pillar"><div class="pillar-n">02</div><div class="pillar-t">Réactivité freelance</div><div class="pillar-d">Pas de circuit de validation. On démarre quand vous avez besoin.</div></div>
+      <div class="pillar"><div class="pillar-n">03</div><div class="pillar-t">Maîtrise IA</div><div class="pillar-d">Formation et déploiement des outils adaptés à votre structure.</div></div>
+    </div>
+  </div>
+
+  <div class="about-divider"></div>
+
+  <div class="about-right reveal-r">
+    <div class="about-photo"></div>
+    <div class="about-overlay"></div>
+    <div class="about-caption">
+      <div class="about-caption-name">Camille</div>
+      <div class="about-caption-role">Assistante de Direction · Freelance · Toulouse</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRESTATIONS ═══════════════ -->
+<section id="prestations" class="s s-white">
+  <div class="services-header">
+    <div class="reveal">
+      <div class="eyebrow">Prestations</div>
+      <h2>Trois pôles.<br><em>Une seule interlocutrice.</em></h2>
+    </div>
+    <p class="body reveal">Sur mesure — ponctuel, mensuel ou long terme. Pas de forfait rigide, juste ce dont vous avez besoin.</p>
+  </div>
+
+  <div class="services-grid stagger">
+    <div class="svc">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop" alt="RH" loading="lazy">
+      <div class="svc-idx">01</div>
+      <div class="svc-title">Ressources Humaines</div>
+      <div class="svc-desc">Gestion complète du personnel avec maîtrise totale de la convention collective propreté et des outils métier.</div>
+      <ul class="svc-list">
+        <li>DPAE, contrats, avenants</li>
+        <li>Paie sur Silae</li>
+        <li>Congés, absences, visites médicales</li>
+        <li>CCN Propreté & services associés</li>
+        <li>Disciplinaire, ruptures conventionnelles</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop" alt="Comptabilité" loading="lazy">
+      <div class="svc-idx">02</div>
+      <div class="svc-title">Comptabilité & Gestion</div>
+      <div class="svc-desc">Du quotidien comptable à la facturation marchés publics. Relances, paiements fournisseurs, Chorus Pro.</div>
+      <ul class="svc-list">
+        <li>Saisie & rapprochement bancaire</li>
+        <li>Facturation & relances clients</li>
+        <li>Paiements fournisseurs</li>
+        <li>Dépôt Chorus Pro</li>
+        <li>Appels d'offres, devis</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <img class="svc-img" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80&auto=format&fit=crop" alt="IA" loading="lazy">
+      <div class="svc-idx">03</div>
+      <div class="svc-title">Administration & IA</div>
+      <div class="svc-desc">Gestion opérationnelle et déploiement concret de l'intelligence artificielle dans vos process internes.</div>
+      <ul class="svc-list">
+        <li>Planning, dispatch, chantiers</li>
+        <li>Suivi clients & reporting</li>
+        <li>Audit process & gains IA</li>
+        <li>Déploiement outils IA adaptés</li>
+        <li>Formation des équipes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BAND ═══════════════ -->
+<div id="band">
+  <div class="band-bg" id="bandBg"></div>
+  <div class="band-overlay"></div>
+  <div class="band-content reveal">
+    <div class="band-quote">
+      <strong>Externalisez l'administratif.</strong><br>
+      Gardez le contrôle sur votre développement.
+    </div>
+    <div class="band-attr">Camille · Freelance · Toulouse</div>
+  </div>
+</div>
+
+<!-- ═══════════════ IA ═══════════════ -->
+<section id="ia">
+  <div class="ia-left">
+    <div class="eyebrow reveal">Accompagnement IA</div>
+    <h2 class="light reveal">Modernisez<br>vos process.<br><em>Sans vous perdre.</em></h2>
+    <p class="body reveal" style="color:rgba(253,252,249,.4);margin-top:8px">
+      L'IA n'est pas réservée aux grandes structures. J'identifie où elle crée de la valeur chez vous — et je la déploie <strong style="color:rgba(253,252,249,.7)">concrètement</strong>.
+    </p>
+    <div class="ia-steps reveal">
+      <div class="ia-step"><div class="ia-sn">1</div><div><div class="ia-st">Audit de vos process</div><div class="ia-sd">On identifie les tâches chronophages, répétitives ou sources d'erreurs.</div></div></div>
+      <div class="ia-step"><div class="ia-sn">2</div><div><div class="ia-st">Sélection des bons outils</div><div class="ia-sd">Pas de gadgets — uniquement ce qui est adapté à votre taille et votre budget.</div></div></div>
+      <div class="ia-step"><div class="ia-sn">3</div><div><div class="ia-st">Déploiement & formation</div><div class="ia-sd">Je forme vos équipes pour une adoption durable et efficace.</div></div></div>
+    </div>
+  </div>
+
+  <div class="ia-div"></div>
+
+  <div class="ia-right reveal-r">
+    <img class="ia-photo" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop" alt="Dashboard" loading="lazy">
+    <div class="ia-metrics" style="margin-top:2px">
+      <div class="ia-m"><div class="ia-ml">Temps admin. économisé</div><div class="ia-mv">–40<span>% en moy.</span></div></div>
+      <div class="ia-m"><div class="ia-ml">Réduction erreurs de saisie</div><div class="ia-mv">–70<span>%</span></div></div>
+      <div class="ia-m"><div class="ia-ml">Traitement relances clients</div><div class="ia-mv">×3<span>plus rapide</span></div></div>
+      <div class="ia-m"><div class="ia-ml">Délai de mise en place</div><div class="ia-mv">2–4<span>sem.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA STRIP ═══════════════ -->
+<div id="cta-strip">
+  <div class="cta-txt reveal">
+    Prêt à externaliser<br>votre administration ?<br><em>Discutons de votre projet.</em>
+  </div>
+  <a href="#contact" class="btn-ink reveal" style="flex-shrink:0;white-space:nowrap">Prendre rendez-vous</a>
+</div>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<section id="contact" class="s">
+  <div class="contact-grid">
+    <div class="contact-left reveal-l">
+      <div class="eyebrow">Contact</div>
+      <h2>Parlons de<br><em>votre projet.</em></h2>
+      <p class="body">Réponse sous 24h. Premier échange gratuit, sans engagement.</p>
+      <div class="ci-rows" style="margin-top:24px">
+        <div class="ci-row"><span class="ci-l">Email</span><span class="ci-v">camille@domaine.fr</span></div>
+        <div class="ci-row"><span class="ci-l">Zone</span><span class="ci-v">Toulouse & périphérie</span></div>
+        <div class="ci-row"><span class="ci-l">Réponse</span><span class="ci-v">Sous 24–48h</span></div>
+      </div>
+      <div class="promise">
+        <div class="promise-t">Premier échange offert</div>
+        <div class="promise-d">30 minutes pour analyser vos besoins et voir si on est alignés — sans engagement.</div>
+      </div>
+    </div>
+
+    <div class="contact-div"></div>
+
+    <div class="contact-right reveal-r">
+      <form class="contact-form" onsubmit="return false">
+        <div class="form-row">
+          <div class="ff"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"></div>
+          <div class="ff"><label>Entreprise</label><input type="text" placeholder="Propreté Sud SARL"></div>
+        </div>
+        <div class="form-row">
+          <div class="ff"><label>Email</label><input type="email" placeholder="jean@entreprise.fr"></div>
+          <div class="ff"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+        </div>
+        <div class="ff">
+          <label>Besoin</label>
+          <select>
+            <option value="" disabled selected>Choisir un pôle…</option>
+            <option>Ressources Humaines & Paie</option>
+            <option>Comptabilité & Facturation</option>
+            <option>Administration & Exploitation</option>
+            <option>Accompagnement IA</option>
+            <option>Plusieurs prestations</option>
+          </select>
+        </div>
+        <div class="ff"><label>Message</label><textarea placeholder="Décrivez brièvement votre situation…"></textarea></div>
+        <button type="submit" class="btn-submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Camille.</div>
+  <div class="f-links">
+    <a href="#about">À propos</a>
+    <a href="#prestations">Prestations</a>
+    <a href="#ia">IA</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="f-copy">© 2026 · Toulouse · Freelance</div>
+</footer>
+
+<script>
+// Nav pin
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('pinned', scrollY > 50), {passive:true});
+
+// Parallax band
+const bandBg = document.getElementById('bandBg');
+window.addEventListener('scroll', () => {
+  const rect = document.getElementById('band').getBoundingClientRect();
+  const progress = -rect.top / window.innerHeight;
+  bandBg.style.transform = `translateY(${progress * 60}px)`;
+}, {passive:true});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
+}, {threshold: .1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.stagger').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

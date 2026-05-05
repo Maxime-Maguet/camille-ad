@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Kit — Camille · Site Vitrine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parch:  #F5F0E8;
+  --sand:   #EAE3D5;
+  --linen:  #DDD5C4;
+  --stone:  #A89880;
+  --bark:   #5C4F3D;
+  --ink:    #1A1410;
+  --white:  #FDFCF9;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:#EDE8DF;color:var(--ink)}
+
+/* ── KIT NAV ── */
+.kit-nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--ink);
+  padding:0 52px;height:58px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.kit-nav-brand{display:flex;align-items:baseline;gap:12px}
+.kit-nav-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white)}
+.kit-nav-sub{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(253,252,249,.25)}
+.kit-nav-links{display:flex}
+.kit-nav-links a{font-size:.65rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,252,249,.3);text-decoration:none;padding:0 18px;height:58px;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.05);transition:color .2s,background .2s}
+.kit-nav-links a:hover{color:var(--white);background:rgba(255,255,255,.04)}
+.kit-version{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,252,249,.2);padding:5px 14px;border:1px solid rgba(255,255,255,.08)}
+
+/* ── SECTION ── */
+.ks{padding:80px 52px;border-bottom:2px solid #D8D0C2}
+.ks:nth-child(even){background:var(--white)}
+.ks:nth-child(odd){background:var(--parch)}
+.ks-label{
+  font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--stone);margin-bottom:48px;
+  display:flex;align-items:center;gap:16px;
+}
+.ks-label::after{content:'';flex:1;height:1px;background:var(--linen)}
+
+/* ── 1. COULEURS ── */
+.colors-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:40px}
+.chip{overflow:hidden;border:1px solid rgba(0,0,0,.05)}
+.chip-swatch{height:110px;width:100%;transition:transform .3s}
+.chip:hover .chip-swatch{transform:scale(1.04)}
+.chip-info{padding:14px 14px 16px;background:var(--white);border-top:1px solid rgba(0,0,0,.05)}
+.chip-name{font-family:'Playfair Display',serif;font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:3px}
+.chip-hex{font-family:'Courier New',monospace;font-size:.68rem;color:var(--stone)}
+.chip-var{font-family:'Courier New',monospace;font-size:.6rem;color:var(--linen);margin-top:2px}
+
+.color-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linen)}
+.cr{background:var(--white);padding:20px 22px}
+.cr-title{font-size:.75rem;font-weight:500;color:var(--ink);margin-bottom:6px}
+.cr-desc{font-size:.78rem;font-weight:300;color:var(--stone);line-height:1.6}
+
+/* ── 2. TYPO ── */
+.type-table{display:flex;flex-direction:column;gap:0;border:1px solid var(--linen)}
+.tr{display:grid;grid-template-columns:220px 1fr;gap:0;border-bottom:1px solid var(--linen)}
+.tr:last-child{border-bottom:none}
+.tr-meta{
+  padding:28px 24px;
+  background:var(--sand);
+  border-right:1px solid var(--linen);
+  display:flex;flex-direction:column;gap:5px;
+  justify-content:center;
+}
+.tr-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.tr-spec{font-family:'Courier New',monospace;font-size:.65rem;color:var(--linen);line-height:1.7;margin-top:4px}
+.tr-sample{padding:28px 36px;display:flex;align-items:center}
+
+.t-hero{font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;line-height:.9;letter-spacing:-.03em;color:var(--ink)}
+.t-hero em{font-style:italic;font-weight:400;color:var(--stone)}
+.t-h1{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;line-height:1.05;letter-spacing:-.025em;color:var(--ink)}
+.t-h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--ink)}
+.t-h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;line-height:1.2;color:var(--ink)}
+.t-body{font-family:'Instrument Sans',sans-serif;font-size:.95rem;font-weight:300;line-height:1.85;color:var(--stone);max-width:500px}
+.t-body strong{color:var(--bark);font-weight:500}
+.t-label-sty{font-family:'Instrument Sans',sans-serif;font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);display:flex;align-items:center;gap:10px}
+.t-label-sty::before{content:'';display:block;width:20px;height:1px;background:var(--linen)}
+.t-caption{font-family:'Instrument Sans',sans-serif;font-size:.78rem;font-weight:300;font-style:italic;color:var(--stone);line-height:1.6}
+.t-nav{font-family:'Instrument Sans',sans-serif;font-size:.73rem;font-weight:400;letter-spacing:.13em;text-transform:uppercase;color:var(--stone)}
+
+/* ── 3. BOUTONS ── */
+.btns-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.btn-group-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:16px}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+
+.b-ink{display:inline-block;font-family:'Instrument Sans',sans-serif;font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--white);background:var(--ink);padding:13px 28px;border:1.5px solid var(--ink);transition:all .25s;cursor:pointer}
+.b-ink:hover{background:transparent;color:var(--ink)}
+.b-line{display:inline-block;font-family:'Instrument Sans',sans-serif;font-size:.73rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--bark);background:transparent;padding:13px 28px;border:1.5px solid var(--linen);transition:all .25s;cursor:pointer}
+.b-line:hover{border-color:var(--bark);color:var(--ink)}
+.b-ink-sm{padding:9px 20px;font-size:.65rem}
+.b-ink-lg{padding:17px 40px;font-size:.8rem}
+
+.dark-swatch{background:var(--ink);padding:28px 24px;display:flex;flex-direction:column;gap:12px}
+.b-ghost{display:inline-block;font-family:'Instrument Sans',sans-serif;font-size:.73rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:rgba(253,252,249,.6);background:transparent;padding:13px 28px;border:1.5px solid rgba(253,252,249,.2);transition:all .25s;cursor:pointer}
+.b-ghost:hover{color:var(--white);border-color:rgba(253,252,249,.6)}
+
+.btn-specs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--linen);margin-top:32px}
+.bs{background:var(--white);padding:18px 20px}
+.bs-k{font-size:.68rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.bs-v{font-family:'Courier New',monospace;font-size:.68rem;color:var(--stone)}
+
+/* ── 4. COMPOSANTS ── */
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.comp-label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:14px}
+
+/* Nav */
+.nav-demo{background:var(--parch);border:1px solid var(--linen);padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.nd-logo-wrap{display:flex;flex-direction:column}
+.nd-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1}
+.nd-sub{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.nd-links{display:flex;gap:24px}
+.nd-link{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stone)}
+
+/* Ticker */
+.ticker-demo{background:var(--ink);padding:12px 0;overflow:hidden}
+.ticker-inner{display:flex;animation:tick 12s linear infinite;white-space:nowrap}
+.ticker-i{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(253,252,249,.35);padding:0 32px;border-right:1px solid rgba(253,252,249,.08);flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Eyebrow */
+.eyebrow-demo{display:inline-flex;align-items:center;gap:10px;font-size:.62rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.eyebrow-demo::before{content:'';display:block;width:20px;height:1px;background:var(--linen)}
+
+/* Pillar card */
+.pillar-demo{border:1px solid var(--linen)}
+.pd-row{padding:18px 22px;border-bottom:1px solid var(--linen)}
+.pd-row:last-child{border-bottom:none}
+.pd-n{font-family:'Playfair Display',serif;font-size:.7rem;color:var(--linen);letter-spacing:.1em;margin-bottom:6px}
+.pd-t{font-size:.88rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.pd-d{font-size:.76rem;font-weight:300;color:var(--stone);line-height:1.5}
+
+/* Service card */
+.svc-demo{background:var(--white);border-top:2px solid var(--ink);padding:32px 28px}
+.sd-idx{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:900;color:var(--linen);line-height:1;letter-spacing:-.05em;margin-bottom:12px}
+.sd-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.sd-desc{font-size:.82rem;font-weight:300;color:var(--stone);line-height:1.75;margin-bottom:16px}
+.sd-list{list-style:none}
+.sd-li{font-size:.78rem;color:var(--bark);padding:5px 0 5px 12px;position:relative;border-bottom:1px solid var(--sand)}
+.sd-li:last-child{border-bottom:none}
+.sd-li::before{content:'–';position:absolute;left:0;color:var(--linen)}
+
+/* Info row */
+.info-demo{border:1px solid var(--linen)}
+.ir{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--linen)}
+.ir:last-child{border-bottom:none}
+.ir-l{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.ir-v{font-size:.86rem;font-weight:300;color:var(--bark)}
+
+/* Metric row */
+.metric-demo{background:var(--ink);display:flex;flex-direction:column;gap:1px}
+.mr{background:rgba(255,255,255,.03);padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+.mr-l{font-size:.75rem;font-weight:300;color:rgba(253,252,249,.3)}
+.mr-v{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:-.03em}
+.mr-v span{font-size:.7rem;font-weight:300;color:rgba(253,252,249,.3);margin-left:2px}
+
+/* Stat */
+.stats-demo{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linen);border:1px solid var(--linen)}
+.st{background:var(--parch);padding:22px;text-align:center}
+.st-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--ink);line-height:1;letter-spacing:-.04em}
+.st-l{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-top:4px}
+
+/* Promise */
+.promise-demo{background:var(--ink);padding:24px 28px}
+.prom-t{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.prom-d{font-size:.8rem;font-weight:300;color:rgba(253,252,249,.4);line-height:1.7}
+
+/* ── 5. FORMULAIRE ── */
+.form-demo{display:flex;flex-direction:column;gap:14px;max-width:560px}
+.form-row-d{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ff{display:flex;flex-direction:column;gap:6px}
+.ff label{font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.ff input,.ff textarea,.ff select{background:var(--white);border:1.5px solid var(--linen);color:var(--ink);padding:13px 16px;font-family:'Instrument Sans',sans-serif;font-size:.88rem;font-weight:300;outline:none;transition:border-color .25s;-webkit-appearance:none;appearance:none}
+.ff input:focus,.ff textarea:focus,.ff select:focus{border-color:var(--bark)}
+.ff input::placeholder,.ff textarea::placeholder{color:var(--linen)}
+.ff textarea{min-height:88px;resize:vertical}
+.ff select option{background:var(--white)}
+.b-submit{background:var(--ink);color:var(--white);padding:14px 32px;font-family:'Instrument Sans',sans-serif;font-size:.73rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);cursor:pointer;transition:all .25s;width:100%}
+.b-submit:hover{background:transparent;color:var(--ink)}
+
+.form-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linen);margin-top:32px}
+.fsp{background:var(--white);padding:18px 20px}
+.fsp-k{font-size:.68rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.fsp-v{font-family:'Courier New',monospace;font-size:.68rem;color:var(--stone)}
+
+/* ── 6. ESPACEMENTS ── */
+.space-table{display:flex;flex-direction:column;gap:0;border:1px solid var(--linen)}
+.sp-row{display:grid;grid-template-columns:100px 1fr 200px;gap:24px;align-items:center;padding:14px 24px;border-bottom:1px solid var(--linen)}
+.sp-row:last-child{border-bottom:none}
+.sp-label{font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)}
+.sp-bar{height:16px;background:var(--ink)}
+.sp-usage{font-size:.75rem;font-weight:300;color:var(--stone)}
+
+/* ── 7. EFFETS ── */
+.fx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--linen)}
+.fx-card{background:var(--white);padding:32px 24px;display:flex;flex-direction:column;gap:16px}
+.fx-demo{height:80px;display:flex;align-items:center;justify-content:center}
+.fx-name{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--ink)}
+.fx-desc{font-size:.75rem;font-weight:300;color:var(--stone);line-height:1.55}
+
+/* Anim démos */
+.fx-hover-btn{background:var(--ink);color:var(--white);padding:11px 22px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-family:'Instrument Sans',sans-serif;cursor:pointer;border:1.5px solid var(--ink);transition:all .25s}
+.fx-hover-btn:hover{background:transparent;color:var(--ink)}
+.fx-bar-wrap{width:80px;height:3px;background:var(--linen);position:relative;overflow:hidden}
+.fx-bar-fill{position:absolute;left:-100%;top:0;bottom:0;width:100%;background:var(--ink);animation:barSlide 2s ease infinite}
+@keyframes barSlide{0%{left:-100%}50%{left:0}100%{left:100%}}
+.fx-reveal-box{width:60px;height:60px;background:var(--sand);border:1px solid var(--linen);display:flex;align-items:center;justify-content:center;animation:revealPulse 2.5s ease infinite}
+@keyframes revealPulse{0%,100%{opacity:.25;transform:translateY(6px)}50%{opacity:1;transform:translateY(0)}}
+.fx-reveal-txt{font-family:'Playfair Display',serif;font-size:.75rem;font-weight:700;color:var(--bark)}
+.fx-parallax{width:72px;height:72px;background:var(--sand);border:1px solid var(--linen);display:flex;align-items:center;justify-content:center;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);text-align:center}
+
+/* ── 8. IMAGES ── */
+.img-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.img-card{position:relative;overflow:hidden}
+.img-card img{width:100%;height:180px;object-fit:cover;filter:sepia(18%) contrast(1.05) saturate(.9);display:block;transition:transform .4s,filter .4s}
+.img-card:hover img{transform:scale(1.05);filter:sepia(5%) contrast(1.08)}
+.img-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,20,16,.7));padding:10px 12px}
+.img-label-txt{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,252,249,.6)}
+.img-filter-note{margin-top:20px;padding:18px 22px;background:var(--white);border:1px solid var(--linen)}
+.img-filter-note-t{font-size:.7rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.img-filter-note-d{font-family:'Courier New',monospace;font-size:.68rem;color:var(--stone)}
+
+/* ── KIT FOOTER ── */
+.kit-footer{background:var(--ink);padding:44px 52px;display:flex;justify-content:space-between;align-items:center}
+.kf-left{display:flex;flex-direction:column;gap:6px}
+.kf-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--white)}
+.kf-sub{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(253,252,249,.25)}
+.kf-right{text-align:right}
+.kf-info{font-size:.68rem;color:rgba(253,252,249,.15);letter-spacing:.06em;line-height:2}
+</style>
+</head>
+<body>
+
+<!-- KIT NAV -->
+<nav class="kit-nav">
+  <div class="kit-nav-brand">
+    <div class="kit-nav-title">Camille.</div>
+    <div class="kit-nav-sub">UI Kit</div>
+  </div>
+  <div class="kit-nav-links">
+    <a href="#colors">Couleurs</a>
+    <a href="#typo">Typographie</a>
+    <a href="#buttons">Boutons</a>
+    <a href="#components">Composants</a>
+    <a href="#forms">Formulaire</a>
+    <a href="#spacing">Espacements</a>
+    <a href="#effects">Effets</a>
+    <a href="#images">Images</a>
+  </div>
+  <div class="kit-version">v1.0 · 2026</div>
+</nav>
+
+<!-- ══════════ 1. COULEURS ══════════ -->
+<div class="ks" id="colors">
+  <div class="ks-label">01 — Palette de couleurs</div>
+
+  <div class="colors-row">
+    <div class="chip">
+      <div class="chip-swatch" style="background:#FDFCF9;border-bottom:1px solid #DDD5C4"></div>
+      <div class="chip-info"><div class="chip-name">White</div><div class="chip-hex">#FDFCF9</div><div class="chip-var">--white</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#F5F0E8"></div>
+      <div class="chip-info"><div class="chip-name">Parch</div><div class="chip-hex">#F5F0E8</div><div class="chip-var">--parch</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#EAE3D5"></div>
+      <div class="chip-info"><div class="chip-name">Sand</div><div class="chip-hex">#EAE3D5</div><div class="chip-var">--sand</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#DDD5C4"></div>
+      <div class="chip-info"><div class="chip-name">Linen</div><div class="chip-hex">#DDD5C4</div><div class="chip-var">--linen</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#A89880"></div>
+      <div class="chip-info"><div class="chip-name">Stone</div><div class="chip-hex">#A89880</div><div class="chip-var">--stone</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#5C4F3D"></div>
+      <div class="chip-info"><div class="chip-name">Bark</div><div class="chip-hex">#5C4F3D</div><div class="chip-var">--bark</div></div>
+    </div>
+    <div class="chip">
+      <div class="chip-swatch" style="background:#1A1410"></div>
+      <div class="chip-info"><div class="chip-name">Ink</div><div class="chip-hex">#1A1410</div><div class="chip-var">--ink</div></div>
+    </div>
+  </div>
+
+  <div class="color-rules">
+    <div class="cr"><div class="cr-title">Fonds clairs</div><div class="cr-desc">--white et --parch en alternance entre sections. --sand pour variantes légères (hover cartes, sections secondaires).</div></div>
+    <div class="cr"><div class="cr-title">Texte</div><div class="cr-desc">--ink pour titres et éléments forts. --stone pour corps et sous-titres. --bark pour listes et éléments intermédiaires.</div></div>
+    <div class="cr"><div class="cr-title">Séparateurs & borders</div><div class="cr-desc">--linen pour toutes les lignes de séparation. --stone jamais en fond. --ink uniquement pour sections sombres clés.</div></div>
+  </div>
+</div>
+
+<!-- ══════════ 2. TYPOGRAPHIE ══════════ -->
+<div class="ks" id="typo">
+  <div class="ks-label">02 — Typographie</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--linen);margin-bottom:40px">
+    <div style="background:var(--ink);padding:32px 36px">
+      <div style="font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(253,252,249,.25);margin-bottom:16px">Police display — Titres</div>
+      <div style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--white);letter-spacing:-.02em">Playfair Display</div>
+      <div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:400;font-style:italic;color:rgba(253,252,249,.4);margin-top:6px">Italic · Regular · Bold · Black</div>
+      <div style="font-family:'Courier New',monospace;font-size:.62rem;color:rgba(253,252,249,.18);margin-top:10px">Google Fonts — fonts.googleapis.com</div>
+    </div>
+    <div style="background:var(--sand);padding:32px 36px">
+      <div style="font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">Police corps — Texte courant</div>
+      <div style="font-family:'Instrument Sans',sans-serif;font-size:2.2rem;font-weight:400;color:var(--ink)">Instrument Sans</div>
+      <div style="font-family:'Instrument Sans',sans-serif;font-size:.9rem;font-weight:300;color:var(--stone);margin-top:6px">Light · Regular · Medium</div>
+      <div style="font-family:'Courier New',monospace;font-size:.62rem;color:var(--linen);margin-top:10px">Google Fonts — fonts.googleapis.com</div>
+    </div>
+  </div>
+
+  <div class="type-table">
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">Hero</div>
+        <div class="tr-spec">Playfair Display 900<br>clamp(4rem, 9vw, 9.5rem)<br>lh: 0.90 · ls: -0.03em<br>color: --ink / --stone italic</div>
+      </div>
+      <div class="tr-sample"><div class="t-hero">L'expertise<br><em>qui vous libère.</em></div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">H1 Section</div>
+        <div class="tr-spec">Playfair Display 700<br>clamp(2.4rem, 4.5vw, 4rem)<br>lh: 1.05 · ls: -0.025em</div>
+      </div>
+      <div class="tr-sample"><div class="t-h1">Une expertise terrain,<br><em style="font-weight:400;color:var(--stone)">pas du généralisme.</em></div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">H2 Carte</div>
+        <div class="tr-spec">Playfair Display 700<br>1.4rem · lh: 1.1<br>ls: -0.015em</div>
+      </div>
+      <div class="tr-sample"><div class="t-h2">Ressources Humaines</div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">H3 Pilier</div>
+        <div class="tr-spec">Playfair Display 700<br>1.2rem · lh: 1.2</div>
+      </div>
+      <div class="tr-sample"><div class="t-h3">Spécialiste du secteur propreté</div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">Body</div>
+        <div class="tr-spec">Instrument Sans 300<br>0.95rem · lh: 1.85<br>color: --stone<br>strong → --bark 500</div>
+      </div>
+      <div class="tr-sample"><div class="t-body">Avec <strong>2 ans d'expérience dans la propreté industrielle</strong>, je connais votre réalité de l'intérieur : la convention collective, les plannings contraints, les exigences du donneur d'ordre.</div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">Eyebrow</div>
+        <div class="tr-spec">Instrument Sans 500<br>0.62rem · UPPERCASE<br>ls: 0.22em · color: --stone<br>ligne avant ::before</div>
+      </div>
+      <div class="tr-sample"><div class="t-label-sty">— À propos</div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">Nav Links</div>
+        <div class="tr-spec">Instrument Sans 400<br>0.73rem · UPPERCASE<br>ls: 0.13em · color: --stone</div>
+      </div>
+      <div class="tr-sample"><div class="t-nav">Prestations · À propos · Contact</div></div>
+    </div>
+    <div class="tr">
+      <div class="tr-meta">
+        <div class="tr-label">Caption</div>
+        <div class="tr-spec">Instrument Sans 300i<br>0.78rem · lh: 1.6<br>color: --stone</div>
+      </div>
+      <div class="tr-sample"><div class="t-caption">Assistante de Direction · Freelance · Toulouse</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 3. BOUTONS ══════════ -->
+<div class="ks" id="buttons">
+  <div class="ks-label">03 — Boutons & CTA</div>
+
+  <div class="btns-grid">
+    <div>
+      <div class="btn-group-label">Sur fond clair (--parch / --white)</div>
+      <div class="btn-row">
+        <button class="b-ink b-ink-sm">Petit</button>
+        <button class="b-ink">Voir les prestations</button>
+        <button class="b-ink b-ink-lg">Grand</button>
+      </div>
+      <div class="btn-row">
+        <button class="b-line b-ink-sm">Petit</button>
+        <button class="b-line">Prendre contact</button>
+        <button class="b-line b-ink-lg">Grand</button>
+      </div>
+      <div style="margin-top:8px;font-size:.75rem;font-weight:300;color:var(--stone);line-height:1.6">
+        <strong style="color:var(--bark)">b-ink</strong> = CTA principal / actions clés<br>
+        <strong style="color:var(--bark)">b-line</strong> = action alternative, secondaire
+      </div>
+    </div>
+
+    <div>
+      <div class="btn-group-label">Sur fond sombre (--ink)</div>
+      <div class="dark-swatch">
+        <button class="b-ink" style="background:var(--white);color:var(--ink);border-color:var(--white)">Prendre rendez-vous</button>
+        <button class="b-ghost">En savoir plus</button>
+      </div>
+      <div style="margin-top:12px;font-size:.75rem;font-weight:300;color:var(--stone);line-height:1.6">
+        <strong style="color:var(--bark)">b-white</strong> = CTA sur sections sombres<br>
+        <strong style="color:var(--bark)">b-ghost</strong> = action secondaire sur fond sombre
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-specs">
+    <div class="bs"><div class="bs-k">Border-radius</div><div class="bs-v">0px — angles francs</div></div>
+    <div class="bs"><div class="bs-k">Border width</div><div class="bs-v">1.5px solid</div></div>
+    <div class="bs"><div class="bs-k">Transition</div><div class="bs-v">all .25s ease</div></div>
+    <div class="bs"><div class="bs-k">Hover primaire</div><div class="bs-v">bg transparent / color --ink</div></div>
+  </div>
+</div>
+
+<!-- ══════════ 4. COMPOSANTS ══════════ -->
+<div class="ks" id="components">
+  <div class="ks-label">04 — Composants UI</div>
+  <div class="comp-grid">
+
+    <div>
+      <div class="comp-label">Navigation principale</div>
+      <div class="nav-demo">
+        <div class="nd-logo-wrap">
+          <div class="nd-logo">Camille</div>
+          <div class="nd-sub">Assistante de Direction</div>
+        </div>
+        <div class="nd-links">
+          <span class="nd-link">À propos</span>
+          <span class="nd-link">Prestations</span>
+          <span class="nd-link">IA</span>
+        </div>
+        <button class="b-ink b-ink-sm">Me contacter</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Ticker — bandeau défilant</div>
+      <div class="ticker-demo">
+        <div class="ticker-inner">
+          <span class="ticker-i">Gestion RH</span><span class="ticker-i">Paie Silae</span><span class="ticker-i">CCN Propreté</span><span class="ticker-i">Chorus Pro</span><span class="ticker-i">Accompagnement IA</span><span class="ticker-i">Toulouse</span>
+          <span class="ticker-i">Gestion RH</span><span class="ticker-i">Paie Silae</span><span class="ticker-i">CCN Propreté</span><span class="ticker-i">Chorus Pro</span><span class="ticker-i">Accompagnement IA</span><span class="ticker-i">Toulouse</span>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:.72rem;font-weight:300;color:var(--stone)">Animation CSS · translateX(-50%) · 18s linear infinite</div>
+    </div>
+
+    <div>
+      <div class="comp-label">Eyebrow label</div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding:24px;background:var(--white);border:1px solid var(--linen)">
+        <div class="eyebrow-demo">À propos</div>
+        <div class="eyebrow-demo">Accompagnement IA</div>
+        <div class="eyebrow-demo" style="color:rgba(253,252,249,.3);--linen:rgba(253,252,249,.12);background:var(--ink);padding:16px;margin:-0px">Sur fond sombre</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Statistiques hero</div>
+      <div class="stats-demo">
+        <div class="st"><div class="st-n">2+</div><div class="st-l">Ans d'exp.</div></div>
+        <div class="st"><div class="st-n">3</div><div class="st-l">Pôles</div></div>
+        <div class="st"><div class="st-n">48h</div><div class="st-l">Réponse</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Cartes piliers (À propos)</div>
+      <div class="pillar-demo">
+        <div class="pd-row"><div class="pd-n">01</div><div class="pd-t">Spécialiste propreté</div><div class="pd-d">CCN, Silae, Chorus Pro — opérationnelle dès J+1.</div></div>
+        <div class="pd-row"><div class="pd-n">02</div><div class="pd-t">Réactivité freelance</div><div class="pd-d">Pas de circuit de validation. On démarre quand vous avez besoin.</div></div>
+        <div class="pd-row"><div class="pd-n">03</div><div class="pd-t">Maîtrise IA</div><div class="pd-d">Formation et déploiement adaptés à votre structure.</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Carte prestation</div>
+      <div class="svc-demo">
+        <div class="sd-idx">01</div>
+        <div class="sd-title">Ressources Humaines</div>
+        <div class="sd-desc">Gestion complète du personnel avec maîtrise de la CCN Propreté.</div>
+        <ul class="sd-list">
+          <li class="sd-li">DPAE, contrats, avenants</li>
+          <li class="sd-li">Paie sur Silae</li>
+          <li class="sd-li">CCN Propreté & services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Panel infos contact</div>
+      <div class="info-demo">
+        <div class="ir"><span class="ir-l">Email</span><span class="ir-v">camille@domaine.fr</span></div>
+        <div class="ir"><span class="ir-l">Zone</span><span class="ir-v">Toulouse & périphérie</span></div>
+        <div class="ir"><span class="ir-l">Réponse</span><span class="ir-v">Sous 24–48h</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="comp-label">Métriques IA (fond --ink)</div>
+      <div class="metric-demo">
+        <div class="mr"><div class="mr-l">Temps admin. économisé</div><div class="mr-v">–40<span>%</span></div></div>
+        <div class="mr"><div class="mr-l">Erreurs de saisie</div><div class="mr-v">–70<span>%</span></div></div>
+        <div class="mr"><div class="mr-l">Relances clients</div><div class="mr-v">×3<span>plus rapide</span></div></div>
+      </div>
+    </div>
+
+    <div style="grid-column:1/-1">
+      <div class="comp-label">Bloc promesse (fond --ink)</div>
+      <div style="max-width:420px">
+        <div class="promise-demo">
+          <div class="prom-t">Premier échange offert</div>
+          <div class="prom-d">30 minutes pour analyser vos besoins et voir si on est alignés — sans engagement de votre côté.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ 5. FORMULAIRE ══════════ -->
+<div class="ks" id="forms">
+  <div class="ks-label">05 — Formulaire de contact</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+    <div>
+      <form class="form-demo" onsubmit="return false">
+        <div class="form-row-d">
+          <div class="ff"><label>Prénom & Nom</label><input type="text" placeholder="Jean Dupont"></div>
+          <div class="ff"><label>Entreprise</label><input type="text" placeholder="Propreté Sud SARL"></div>
+        </div>
+        <div class="form-row-d">
+          <div class="ff"><label>Email</label><input type="email" placeholder="jean@entreprise.fr"></div>
+          <div class="ff"><label>Téléphone</label><input type="tel" placeholder="06 00 00 00 00"></div>
+        </div>
+        <div class="ff">
+          <label>Besoin</label>
+          <select><option disabled selected>Choisir un pôle…</option><option>RH & Paie</option><option>Comptabilité</option><option>Administration & IA</option></select>
+        </div>
+        <div class="ff"><label>Message</label><textarea placeholder="Décrivez brièvement votre situation…"></textarea></div>
+        <button type="submit" class="b-submit">Envoyer le message</button>
+      </form>
+    </div>
+    <div>
+      <div class="form-specs">
+        <div class="fsp"><div class="fsp-k">Background</div><div class="fsp-v">--white</div></div>
+        <div class="fsp"><div class="fsp-k">Border repos</div><div class="fsp-v">1.5px --linen</div></div>
+        <div class="fsp"><div class="fsp-k">Border focus</div><div class="fsp-v">1.5px --bark</div></div>
+        <div class="fsp"><div class="fsp-k">Padding</div><div class="fsp-v">13px 16px</div></div>
+        <div class="fsp"><div class="fsp-k">Font</div><div class="fsp-v">Instrument Sans 300 · .88rem</div></div>
+        <div class="fsp"><div class="fsp-k">Radius</div><div class="fsp-v">0px</div></div>
+      </div>
+      <div style="margin-top:20px;padding:20px 22px;background:var(--white);border:1px solid var(--linen)">
+        <div style="font-size:.72rem;font-weight:500;color:var(--ink);margin-bottom:6px">Intégration recommandée</div>
+        <div style="font-size:.78rem;font-weight:300;color:var(--stone);line-height:1.7">Formspree · EmailJS · Netlify Forms<br>6 champs maximum · Réponse 24–48h</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 6. ESPACEMENTS ══════════ -->
+<div class="ks" id="spacing">
+  <div class="ks-label">06 — Espacements & Layout</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px">
+    <div>
+      <div style="font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:20px">Tokens d'espacement</div>
+      <div class="space-table">
+        <div class="sp-row"><div class="sp-label">8px</div><div><div class="sp-bar" style="width:8px"></div></div><div class="sp-usage">Gap minimal, icônes</div></div>
+        <div class="sp-row"><div class="sp-label">16px</div><div><div class="sp-bar" style="width:16px"></div></div><div class="sp-usage">Padding interne champs</div></div>
+        <div class="sp-row"><div class="sp-label">24px</div><div><div class="sp-bar" style="width:24px"></div></div><div class="sp-usage">Padding cartes compact</div></div>
+        <div class="sp-row"><div class="sp-label">32px</div><div><div class="sp-bar" style="width:32px"></div></div><div class="sp-usage">Gap interne sections</div></div>
+        <div class="sp-row"><div class="sp-label">48px</div><div><div class="sp-bar" style="width:48px"></div></div><div class="sp-usage">Padding cartes standard</div></div>
+        <div class="sp-row"><div class="sp-label">52px</div><div><div class="sp-bar" style="width:52px"></div></div><div class="sp-usage">Padding horizontal page</div></div>
+        <div class="sp-row"><div class="sp-label">80px</div><div><div class="sp-bar" style="width:80px"></div></div><div class="sp-usage">Gap grilles & colonnes</div></div>
+        <div class="sp-row"><div class="sp-label">100px</div><div><div class="sp-bar" style="width:100px"></div></div><div class="sp-usage">Padding vertical sections</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:20px">Breakpoints & grilles</div>
+      <div style="display:flex;flex-direction:column;gap:2px;background:var(--linen)">
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Mobile</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">max-width: 768px · 1 colonne</span></div>
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Tablette</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">max-width: 1024px · 1–2 col.</span></div>
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Desktop</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">min-width: 1025px · 2–3 col.</span></div>
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Max container</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">1440px recommandé</span></div>
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Nav height</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">66px fixe · position: fixed</span></div>
+        <div style="background:var(--white);padding:14px 20px;display:flex;justify-content:space-between"><span style="font-size:.78rem;color:var(--bark)">Gap grille prestations</span><span style="font-family:'Courier New',monospace;font-size:.72rem;color:var(--stone)">1px (effet jointure --linen)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 7. EFFETS ══════════ -->
+<div class="ks" id="effects">
+  <div class="ks-label">07 — Effets & Animations</div>
+  <div class="fx-grid">
+    <div class="fx-card">
+      <div class="fx-demo"><button class="fx-hover-btn">Hover moi</button></div>
+      <div class="fx-name">Hover bouton</div>
+      <div class="fx-desc">bg --ink → transparent. Couleur --white → --ink. Border reste. Transition all .25s ease.</div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-demo" style="flex-direction:column;gap:10px">
+        <div class="fx-bar-wrap"></div>
+        <div class="fx-bar-wrap" style="width:60px"></div>
+      </div>
+      <div class="fx-name">Barre carte hover</div>
+      <div class="fx-desc">Trait 2px --ink en top des cartes. scaleX(0→1) depuis gauche. Durée .5s cubic-bezier(.4,0,.2,1).</div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-demo"><div class="fx-reveal-box"><div class="fx-reveal-txt">Révèle</div></div></div>
+      <div class="fx-name">Reveal au scroll</div>
+      <div class="fx-desc">opacity 0→1 + translateY(28px→0). Easing cubic-bezier(.4,0,.2,1) · 850ms. Stagger 130ms entre items.</div>
+    </div>
+    <div class="fx-card">
+      <div class="fx-demo"><div class="fx-parallax">Parallaxe<br>fond photo</div></div>
+      <div class="fx-name">Parallaxe & sepia</div>
+      <div class="fx-desc">translateY(scroll × 0.3) sur bandes photo. Filtre sepia(18%) + contrast(1.05) sur toutes les images.</div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linen);margin-top:20px">
+    <div style="background:var(--white);padding:18px 22px"><div style="font-size:.72rem;font-weight:500;color:var(--ink);margin-bottom:4px">Durée hover</div><div style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--stone)">.25s ease</div></div>
+    <div style="background:var(--white);padding:18px 22px"><div style="font-size:.72rem;font-weight:500;color:var(--ink);margin-bottom:4px">Durée scroll reveal</div><div style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--stone)">.85s cubic-bezier(.4, 0, .2, 1)</div></div>
+    <div style="background:var(--white);padding:18px 22px"><div style="font-size:.72rem;font-weight:500;color:var(--ink);margin-bottom:4px">Ticker</div><div style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--stone)">translateX(-50%) 18s linear infinite</div></div>
+  </div>
+</div>
+
+<!-- ══════════ 8. IMAGES ══════════ -->
+<div class="ks" id="images">
+  <div class="ks-label">08 — Traitement images</div>
+  <div class="img-grid">
+    <div class="img-card">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop" alt="Portrait pro" loading="lazy">
+      <div class="img-label"><div class="img-label-txt">Portrait — About</div></div>
+    </div>
+    <div class="img-card">
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80&auto=format&fit=crop" alt="RH" loading="lazy">
+      <div class="img-label"><div class="img-label-txt">Carte RH</div></div>
+    </div>
+    <div class="img-card">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=80&auto=format&fit=crop" alt="Tech" loading="lazy">
+      <div class="img-label"><div class="img-label-txt">Bande parallaxe</div></div>
+    </div>
+    <div class="img-card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" alt="Dashboard" loading="lazy">
+      <div class="img-label"><div class="img-label-txt">Dashboard IA</div></div>
+    </div>
+  </div>
+  <div class="img-filter-note" style="margin-top:12px">
+    <div class="img-filter-note-t">Filtre CSS appliqué sur toutes les images</div>
+    <div class="img-filter-note-d">filter: sepia(18%) contrast(1.05) saturate(.9) — Hover : sepia(5%) contrast(1.08) · Transition .4s ease</div>
+  </div>
+  <div style="margin-top:12px;padding:18px 22px;background:var(--white);border:1px solid var(--linen)">
+    <div style="font-size:.7rem;font-weight:500;color:var(--ink);margin-bottom:4px">Remplacement par photos réelles</div>
+    <div style="font-size:.78rem;font-weight:300;color:var(--stone);line-height:1.7">Remplacer chaque URL Unsplash par le chemin local de la photo. Garder le même filtre CSS pour la cohérence éditoriale. Format recommandé : WebP, max 800px de large, qualité 85.</div>
+  </div>
+</div>
+
+<!-- KIT FOOTER -->
+<div class="kit-footer">
+  <div class="kf-left">
+    <div class="kf-title">Camille. — UI Kit v1.0</div>
+    <div class="kf-sub">Document de référence visuelle · Usage interne · 2026</div>
+  </div>
+  <div class="kf-right">
+    <div class="kf-info">
+      Playfair Display + Instrument Sans · Google Fonts<br>
+      Palette beige chaud · 7 teintes · Angles francs (radius: 0)<br>
+      Direction artistique : Magazine éditorial · Contrastes forts
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
