@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --white: #fdfcf9;
+  --parch: #f5f0e8;
+  --sand: #eae3d5;
+  --linen: #ddd5c4;
+  --stone: #a89880;
+  --bark: #5c4f3d;
+  --ink: #1a1410;
+}
+
+body {
+  body {
+    background: var(--parch);
+    color: var(--ink);
+    font-family: var(--font-instrument), sans-serif;
+  }
+}
