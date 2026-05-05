@@ -28,16 +28,16 @@
 - [✅] **0.1** `npx create-next-app@latest camille-ad` + analyse des prompts CLI
 - [✅] **0.2** Découverte structure App Router (`app/`, `layout.tsx`, `page.tsx`)
 - [✅] **0.3** Premier `npm run dev` — comprendre ce qui s'affiche
-- [✅ ] **0.4** Init Git + repo GitHub + workflow conventionnel
+- [✅] **0.4** Init Git + repo GitHub + workflow conventionnel
 - [✅] **0.5** Configuration Tailwind v4 + tokens couleurs Camille (CSS variables)
 - [✅] **0.6** Import des polices Google Fonts (Playfair Display + Instrument Sans)
-- [✅ ] **0.7** Setup shadcn/ui (init + premier composant test)
+- [✅] **0.7** Setup shadcn/ui (init + premier composant test)
 
 ---
 
 ## Phase 1 — Architecture du site 🔄
 
-- [ ] **1.1** Définir la structure de dossiers (`components/`, `lib/`, `actions/`)
+- [✅] **1.1** Définir la structure de dossiers (`components/`, `lib/`, `actions/`)
 - [ ] **1.2** Créer le `layout.tsx` racine (nav fixe + footer + fonts)
 - [ ] **1.3** Créer le `page.tsx` d'accueil avec sections placeholder
 - [ ] **1.4** Mapping Server Component vs Client Component pour chaque section

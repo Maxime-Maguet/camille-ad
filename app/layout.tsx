@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Instrument_Sans, Geist } from "next/font/google";
+import { Playfair_Display, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import Nav from "@/components/sections/Nav";
+import Footer from "@/components/sections/Footer";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -32,9 +33,13 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={cn(playfair.variable, instrumentSans.variable, "font-sans", geist.variable)}
+      className={cn(playfair.variable, instrumentSans.variable, "font-sans")}
     >
-      <body>{children}</body>
+      <body>
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
