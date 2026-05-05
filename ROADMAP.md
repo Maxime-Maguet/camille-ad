@@ -11,8 +11,8 @@
 | Phase | Nom                        | Statut     | Avancement |
 | ----- | -------------------------- | ---------- | ---------- |
 | 0     | Setup & Fondations         | ✅ terminé | 7/7        |
-| 1     | Architecture               | ⏸️ À venir | 0/4        |
-| 2     | Découpage composants       | ⏸️ À venir | 0/11       |
+| 1     | Architecture               | ✅ Terminé | 4/4        |
+| 2     | Découpage composants       | 🔄 À venir | 0/11       |
 | 3     | Animations Framer Motion   | ⏸️ À venir | 0/5        |
 | 4     | Formulaire & Server Action | ⏸️ À venir | 0/5        |
 | 5     | Polish, SEO & Légal        | ⏸️ À venir | 0/9        |
@@ -35,7 +35,7 @@
 
 ---
 
-## Phase 1 — Architecture du site 🔄
+## Phase 1 — Architecture du site ✅
 
 - [✅] **1.1** Définir la structure de dossiers (`components/`, `lib/`, `actions/`)
 - [✅] **1.2** Créer le `layout.tsx` racine (nav fixe + footer + fonts)
@@ -44,7 +44,7 @@
 
 ---
 
-## Phase 2 — Découpage en composants ⏸️
+## Phase 2 — Découpage en composants 🔄
 
 - [ ] **2.1** `<Nav />` — Client Component (scroll detection)
 - [ ] **2.2** `<Hero />` — Server Component (titre éditorial + animations CSS au mount)

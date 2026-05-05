@@ -8,7 +8,7 @@ import Services from "@/components/sections/Services";
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-16.5">
       <Hero />
       <About />
       <Services />
