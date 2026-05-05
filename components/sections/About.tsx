@@ -72,12 +72,12 @@ export default function About() {
           })}
         </div>
 
-        <div className="border border-linen mt-8">
+        <div className="border border-linen mt-8 ">
           {pilliers.map((item, i) => {
             return (
               <div
                 key={i}
-                className="border-b border-linen last:border-b-0 p-5"
+                className="border-b border-linen last:border-b-0 p-5 hover:bg-sand"
               >
                 <div className="font-display text-[0.75rem] text-linen tracking-widest mb-1.5">
                   {item.num}
