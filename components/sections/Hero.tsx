@@ -1,3 +1,5 @@
+import Ticker from "./Ticker";
+
 export default function Hero() {
   return (
     <section className="min-h-screen grid grid-rows-[1fr, auto] pt-16.5 relative overflow-hidden">
@@ -47,6 +49,7 @@ export default function Hero() {
           </a>
         </div>
       </div>
+      <Ticker />
     </section>
   );
 }

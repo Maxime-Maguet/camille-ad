@@ -43,6 +43,7 @@
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
+  --animate-ticker: ticker 18s linear infinite;
 }
 
 @layer base {
@@ -52,5 +53,14 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-instrument), sans-serif;
+  }
+
+  @keyframes ticker {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
