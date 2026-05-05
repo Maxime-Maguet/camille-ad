@@ -38,9 +38,9 @@
 ## Phase 1 — Architecture du site 🔄
 
 - [✅] **1.1** Définir la structure de dossiers (`components/`, `lib/`, `actions/`)
-- [ ] **1.2** Créer le `layout.tsx` racine (nav fixe + footer + fonts)
-- [ ] **1.3** Créer le `page.tsx` d'accueil avec sections placeholder
-- [ ] **1.4** Mapping Server Component vs Client Component pour chaque section
+- [✅] **1.2** Créer le `layout.tsx` racine (nav fixe + footer + fonts)
+- [✅] **1.3** Créer le `page.tsx` d'accueil avec sections placeholder
+- [✅] **1.4** Mapping Server Component vs Client Component pour chaque section
 
 ---
 
