@@ -1,41 +1,41 @@
 # 🗺️ Roadmap — Site Vitrine Camille
 
 > **Dernière mise à jour** : 5 mai 2026
-> **Phase actuelle** : Phase 0 — Setup
+> **Phase actuelle** : Phase 1 — Architecture du site
 > **Avancement global** : 0%
 
 ---
 
 ## 📊 Vue d'ensemble
 
-| Phase | Nom                        | Statut      | Avancement |
-| ----- | -------------------------- | ----------- | ---------- |
-| 0     | Setup & Fondations         | 🔄 En cours | 0/7        |
-| 1     | Architecture               | ⏸️ À venir  | 0/4        |
-| 2     | Découpage composants       | ⏸️ À venir  | 0/11       |
-| 3     | Animations Framer Motion   | ⏸️ À venir  | 0/5        |
-| 4     | Formulaire & Server Action | ⏸️ À venir  | 0/5        |
-| 5     | Polish, SEO & Légal        | ⏸️ À venir  | 0/9        |
-| 6     | Déploiement Vercel         | ⏸️ À venir  | 0/7        |
-| 7     | Post-lancement             | ⏸️ À venir  | 0/3        |
+| Phase | Nom                        | Statut     | Avancement |
+| ----- | -------------------------- | ---------- | ---------- |
+| 0     | Setup & Fondations         | ✅ terminé | 7/7        |
+| 1     | Architecture               | ⏸️ À venir | 0/4        |
+| 2     | Découpage composants       | ⏸️ À venir | 0/11       |
+| 3     | Animations Framer Motion   | ⏸️ À venir | 0/5        |
+| 4     | Formulaire & Server Action | ⏸️ À venir | 0/5        |
+| 5     | Polish, SEO & Légal        | ⏸️ À venir | 0/9        |
+| 6     | Déploiement Vercel         | ⏸️ À venir | 0/7        |
+| 7     | Post-lancement             | ⏸️ À venir | 0/3        |
 
 **Légende** : ✅ Terminée · 🔄 En cours · ⏸️ À venir · ⚠️ Bloquée
 
 ---
 
-## Phase 0 — Setup & Fondations 🔄
+## Phase 0 — Setup & Fondations ✅
 
-- [ ] **0.1** `npx create-next-app@latest camille-ad` + analyse des prompts CLI
-- [ ] **0.2** Découverte structure App Router (`app/`, `layout.tsx`, `page.tsx`)
-- [ ] **0.3** Premier `npm run dev` — comprendre ce qui s'affiche
-- [ ] **0.4** Init Git + repo GitHub + workflow conventionnel
-- [ ] **0.5** Configuration Tailwind v4 + tokens couleurs Camille (CSS variables)
-- [ ] **0.6** Import des polices Google Fonts (Playfair Display + Instrument Sans)
-- [ ] **0.7** Setup shadcn/ui (init + premier composant test)
+- [✅] **0.1** `npx create-next-app@latest camille-ad` + analyse des prompts CLI
+- [✅] **0.2** Découverte structure App Router (`app/`, `layout.tsx`, `page.tsx`)
+- [✅] **0.3** Premier `npm run dev` — comprendre ce qui s'affiche
+- [✅ ] **0.4** Init Git + repo GitHub + workflow conventionnel
+- [✅] **0.5** Configuration Tailwind v4 + tokens couleurs Camille (CSS variables)
+- [✅] **0.6** Import des polices Google Fonts (Playfair Display + Instrument Sans)
+- [✅ ] **0.7** Setup shadcn/ui (init + premier composant test)
 
 ---
 
-## Phase 1 — Architecture du site ⏸️
+## Phase 1 — Architecture du site 🔄
 
 - [ ] **1.1** Définir la structure de dossiers (`components/`, `lib/`, `actions/`)
 - [ ] **1.2** Créer le `layout.tsx` racine (nav fixe + footer + fonts)
