@@ -46,7 +46,7 @@
 
 ## Phase 2 — Découpage en composants 🔄
 
-- [ ] **2.1** `<Nav />` — Client Component (scroll detection)
+- [✅] **2.1** `<Nav />` — Client Component (scroll detection)
 - [ ] **2.2** `<Hero />` — Server Component (titre éditorial + animations CSS au mount)
 - [ ] **2.3** `<Ticker />` — Server Component (animation pure CSS)
 - [ ] **2.4** `<About />` — Server Component (split 2 colonnes)
