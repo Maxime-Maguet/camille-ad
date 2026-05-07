@@ -6,7 +6,6 @@ export default function Nav() {
   const [isPinned, setIsPinned] = useState(false);
 
   const handleScroll = () => {
-    console.log(scrollY);
     setIsPinned(scrollY > 50);
   };
 
