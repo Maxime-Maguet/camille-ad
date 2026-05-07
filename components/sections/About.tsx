@@ -1,4 +1,5 @@
 import SectionHeader from "../ui/SectionHeader";
+import * as motion from "motion/react-client";
 
 export default function About() {
   const stats: { value: string; label: string }[] = [
@@ -26,8 +27,17 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="grid grid-cols-[1fr_2px_1fr]">
-      <div className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25">
+    <section
+      id="about"
+      className="grid grid-cols-[1fr_2px_1fr] overflow-hidden"
+    >
+      <motion.div
+        initial={{ opacity: 0, x: -24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+        viewport={{ once: true, amount: 0.1 }}
+        className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25"
+      >
         <SectionHeader
           label={`À propos`}
           title={`Une expertise`}
@@ -92,12 +102,18 @@ export default function About() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       <div className="bg-linen" />
-      <div className="relative overflow-hidden min-h-[80vh]">
+      <motion.div
+        initial={{ opacity: 0, x: 24 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
+        viewport={{ once: true }}
+        className="relative overflow-hidden min-h-[80vh]"
+      >
         {/* photo Phase 5 */}
-      </div>
+      </motion.div>
     </section>
   );
 }

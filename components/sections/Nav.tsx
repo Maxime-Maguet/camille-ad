@@ -20,13 +20,13 @@ export default function Nav() {
   return (
     <nav
       className={cn(
-        "fixed z-300 flex items-center justify-between px-13 h-16.5 transition-[background,border-color] duration-400 w-full ",
-        isPinned && "bg-parch/97 backdrop-blur-md border-b border-linen",
+        "fixed z-300 flex items-center justify-between px-13 h-16.5 transition-[background,border-color] duration-400 w-full border-b border-transparent",
+        isPinned && "bg-parch/97 backdrop-blur-md border-linen",
       )}
     >
       <a
         href="#"
-        className="font-display text-xl font-bold text-ink tracking-normal no-underline"
+        className="font-display text-xl font-bold text-ink tracking-[-0.01em]"
       >
         Camille
         <span className="block font-sans text-[0.6rem] font-normal tracking-[0.22em] uppercase text-stone -mt-0.5">
@@ -69,7 +69,7 @@ export default function Nav() {
       </ul>
       <a
         href="#contact"
-        className="text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink py-2.5 px-6 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-all duration-250"
+        className="text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink py-2.5 px-6 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-250"
       >
         Me contacter
       </a>
