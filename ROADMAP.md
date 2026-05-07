@@ -53,7 +53,7 @@
 - [✅] **2.5** `<Pillars />` — Server Component (3 piliers)
 - [✅] **2.6** `<Services />` — Server Component (grille 3 cartes)
 - [✅] **2.7** `<Band />` — Client Component (scroll listener pour parallax)
-- [ ] **2.8** `<IASection />` — Server Component (fond ink, 3 étapes + métriques)
+- [✅] **2.8** `<IASection />` — Server Component (fond ink, 3 étapes + métriques)
 - [ ] **2.9** `<CTAStrip />` — Server Component
 - [ ] **2.10** `<Contact />` — Split (gauche Server, formulaire Client)
 - [ ] **2.11** `<Footer />` — Server Component

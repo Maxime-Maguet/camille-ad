@@ -55,7 +55,7 @@ export default function Services() {
   ];
 
   return (
-    <section className="bg-white px-13 pt-25">
+    <section id="prestations" className="bg-white px-13 pt-25">
       <div className="grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen">
         <SectionHeader
           label={`Prestations`}
