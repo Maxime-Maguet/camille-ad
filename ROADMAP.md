@@ -8,16 +8,16 @@
 
 ## 📊 Vue d'ensemble
 
-| Phase | Nom                        | Statut     | Avancement |
-| ----- | -------------------------- | ---------- | ---------- |
-| 0     | Setup & Fondations         | ✅ terminé | 7/7        |
-| 1     | Architecture               | ✅ Terminé | 4/4        |
-| 2     | Découpage composants       | 🔄 À venir | 0/11       |
-| 3     | Animations Framer Motion   | ⏸️ À venir | 0/5        |
-| 4     | Formulaire & Server Action | ⏸️ À venir | 0/5        |
-| 5     | Polish, SEO & Légal        | ⏸️ À venir | 0/9        |
-| 6     | Déploiement Vercel         | ⏸️ À venir | 0/7        |
-| 7     | Post-lancement             | ⏸️ À venir | 0/3        |
+| Phase | Nom                        | Statut      | Avancement |
+| ----- | -------------------------- | ----------- | ---------- |
+| 0     | Setup & Fondations         | ✅ terminé  | 7/7        |
+| 1     | Architecture               | ✅ Terminé  | 4/4        |
+| 2     | Découpage composants       | ✅ Terminé  | 11/11      |
+| 3     | Animations Framer Motion   | 🔄 En cours | 0/5        |
+| 4     | Formulaire & Server Action | ⏸️ À venir  | 0/5        |
+| 5     | Polish, SEO & Légal        | ⏸️ À venir  | 0/9        |
+| 6     | Déploiement Vercel         | ⏸️ À venir  | 0/7        |
+| 7     | Post-lancement             | ⏸️ À venir  | 0/3        |
 
 **Légende** : ✅ Terminée · 🔄 En cours · ⏸️ À venir · ⚠️ Bloquée
 
@@ -44,7 +44,7 @@
 
 ---
 
-## Phase 2 — Découpage en composants 🔄
+## Phase 2 — Découpage en composants ✅
 
 - [✅] **2.1** `<Nav />` — Client Component (scroll detection)
 - [✅] **2.2** `<Hero />` — Server Component (titre éditorial + animations CSS au mount)
@@ -56,11 +56,11 @@
 - [✅] **2.8** `<IASection />` — Server Component (fond ink, 3 étapes + métriques)
 - [✅] **2.9** `<CTAStrip />` — Server Component
 - [✅] **2.10** `<Contact />` — Split (gauche Server, formulaire Client)
-- [ ] **2.11** `<Footer />` — Server Component
+- [✅] **2.11** `<Footer />` — Server Component
 
 ---
 
-## Phase 3 — Animations Framer Motion ⏸️
+## Phase 3 — Animations Framer Motion 🔄
 
 - [ ] **3.1** Découverte Framer Motion (concepts : `motion.div`, `variants`, `whileInView`)
 - [ ] **3.2** Remplacement des `.reveal` CSS par Framer Motion

@@ -26,7 +26,7 @@ export default function About() {
   ];
 
   return (
-    <section className="grid grid-cols-[1fr_2px_1fr]">
+    <section id="about" className="grid grid-cols-[1fr_2px_1fr]">
       <div className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25">
         <SectionHeader
           label={`À propos`}

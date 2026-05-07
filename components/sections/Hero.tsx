@@ -1,4 +1,5 @@
 import Ticker from "./Ticker";
+import * as motion from "motion/react-client";
 
 export default function Hero() {
   return (
@@ -9,19 +10,38 @@ export default function Hero() {
       </div>
 
       <div className=" relative flex flex-col justify-center px-15 py-13">
-        <div className="inline-flex items-center g-[10px] text-[0.65rem]  font-medium tracking-[0.22em] uppercase text-stone mb-7 ">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+          className="inline-flex items-center g-[10px] text-[0.65rem]  font-medium tracking-[0.22em] uppercase text-stone mb-7 "
+        >
           <span className="block w-7 h-px bg-linen mr-2.5"></span>
           Assistante de Direction Freelance · Toulouse
-        </div>
-        <h1 className="font-display text-[clamp(4rem,9vw,9.5rem)]/[0.9]  tracking-[-0.03em] font-black text-ink">
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
+          className="font-display text-[clamp(4rem,9vw,9.5rem)]/[0.9]  tracking-[-0.03em] font-black text-ink"
+        >
           <span className="block">L&apos;expertise</span>
           <span className="block italic text-stone font-normal">qui vous</span>
           <span className="block">libère.</span>
-        </h1>
-        <div className="w-full h-px bg-linen my-10"></div>
+        </motion.h1>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          style={{ transformOrigin: "left" }}
+          className="w-full h-px bg-linen my-10"
+        ></motion.div>
       </div>
 
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
         className="grid grid-cols-[1fr_auto_1fr]
  gap-10 items-end pt-0 px-13 pb-15"
       >
@@ -48,7 +68,7 @@ export default function Hero() {
             Prendre contact
           </a>
         </div>
-      </div>
+      </motion.div>
       <Ticker />
     </section>
   );
