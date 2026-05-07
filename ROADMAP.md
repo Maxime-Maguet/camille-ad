@@ -51,7 +51,7 @@
 - [✅] **2.3** `<Ticker />` — Server Component (animation pure CSS)
 - [✅] **2.4** `<About />` — Server Component (split 2 colonnes)
 - [✅] **2.5** `<Pillars />` — Server Component (3 piliers)
-- [ ] **2.6** `<Services />` — Server Component (grille 3 cartes)
+- [✅] **2.6** `<Services />` — Server Component (grille 3 cartes)
 - [ ] **2.7** `<Band />` — Client Component (scroll listener pour parallax)
 - [ ] **2.8** `<IASection />` — Server Component (fond ink, 3 étapes + métriques)
 - [ ] **2.9** `<CTAStrip />` — Server Component

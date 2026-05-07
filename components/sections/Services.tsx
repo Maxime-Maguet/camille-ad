@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SectionHeader from "../ui/SectionHeader";
 
 export default function Services() {
   const services: {
@@ -54,63 +55,51 @@ export default function Services() {
   ];
 
   return (
-    <section className="bg-white">
-      {/* Container du header  */}
+    <section className="bg-white px-13 pt-25">
       <div className="grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen">
-        {/* Colonne de gauche */}
-        <div className="">
-          <div className="inline-flex items-center text-[0.65rem] font-medium tracking-[0.22em] uppercase text-stone mb-7">
-            <span className="block w-5 h-px bg-linen mr-2.5"></span>
-            Prestations
-          </div>
-
-          <h2 className="font-display text-[clamp(2.4rem,4.5vw,4rem)] leading-[1.05] tracking-tight font-bold text-ink">
-            Trois pôles. <br />
-            <span className="italic block font-normal text-stone">
-              Une seule interlocutrice.
-            </span>
-          </h2>
-        </div>
-
-        {/* Colonne de droite */}
-        <p className="text-[0.95rem]/[1.85] font-light text-stone ">
+        <SectionHeader
+          label={`Prestations`}
+          title={`Trois pôles.`}
+          subtitle={`Une seule interlocutrice.`}
+        />
+        <p className="text-[0.95rem]/[1.85] font-light text-stone">
           Sur mesure — ponctuel, mensuel ou long terme. Pas de forfait rigide,
           juste ce dont vous avez besoin.
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-px bg-linen">
+      <div className="grid grid-cols-3 gap-px bg-linen -mx-13">
         {services.map((item, index) => {
           return (
             <div
               key={index}
               className="group bg-white py-12 px-9 flex flex-col relative overflow-hidden transition-all duration-300 ease-in-out hover:bg-parch"
             >
-              <div className=" relative w-full h-40 mb-8 overflow-hidden">
+              <div className="relative w-full h-40 mb-8 overflow-hidden">
                 <Image
                   src={item.img}
                   alt={item.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover sepia-20 contrast-[1.05] saturate-[0.9] transition-all duration-400 ease-in-out group-hover:sepia-5 group-hover:contrast-[1.08] "
+                  className="object-cover sepia-20 contrast-[1.05] saturate-[0.9] transition-all duration-400 ease-in-out group-hover:sepia-5 group-hover:contrast-[1.08]"
                 />
               </div>
-              <div className="font-display text-[4.5rem]/[1] font-black text-linen tracking mb-4 ">
+              <div className="font-display text-[4.5rem]/[1] font-black text-linen tracking mb-4">
                 {item.num}
               </div>
-              <div className="font-display text-[1.4rem] font-bold text-ink mb-3 tracking-[-0.01em] ">
+              <div className="font-display text-[1.4rem] font-bold text-ink mb-3 tracking-[-0.01em]">
                 {item.title}
               </div>
               <div className="text-[0.85rem]/[1.8] font-light text-stone mb-6 flex-1">
                 {item.desc}
               </div>
               <div>
-                <ul className="svc-list flex flex-col gap-1.75 mt-auto list-none">
+                <ul className="flex flex-col mt-auto list-none">
                   {item.list.map((l, i) => {
                     return (
                       <li
                         key={i}
-                        className="relative text-[0.8rem] text-bark py-1.5 pr-0 pl-3.5 border-b border-linen/50 last:border-none leading-normal before:content-['–'] before:absolute before:left-0 before:text-linen"
+                        className="relative text-[0.8rem] text-bark py-1.5 pl-3.5 border-b border-linen/50 last:border-none leading-normal before:content-['–'] before:absolute before:left-0 before:text-linen"
                       >
                         {l}
                       </li>

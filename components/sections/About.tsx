@@ -1,3 +1,5 @@
+import SectionHeader from "../ui/SectionHeader";
+
 export default function About() {
   const stats: { value: string; label: string }[] = [
     { value: "2+", label: "Ans exp." },
@@ -26,13 +28,11 @@ export default function About() {
   return (
     <section className="grid grid-cols-[1fr_2px_1fr]">
       <div className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25">
-        <div className="inline-flex items-center g-[10px] text-[0.65rem]  font-medium tracking-[0.22em] uppercase text-stone mb-7 ">
-          <span className="block w-5 h-px bg-linen mr-2.5"></span>À propos
-        </div>
-        <h2 className=" font-display text-[clamp(2.4rem,4.5vw,4rem)]/[1.05]  tracking-tigth font-bold text-ink mb-6">
-          Une expertise <br />
-          <span className="italic font-normal text-stone">terrain.</span>
-        </h2>
+        <SectionHeader
+          label={`À propos`}
+          title={`Une expertise`}
+          subtitle={`terrain.`}
+        />
 
         <div className=" text-[0.95rem]/[1.85] font-light text-stone">
           <p className="mt-2">
