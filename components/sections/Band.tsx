@@ -1,41 +1,34 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-
+import { useRef } from "react";
+import { useScroll, useTransform } from "motion/react";
+import * as motion from "motion/react-client";
 import Image from "next/image";
 
 export default function Band() {
-  const band = useRef<HTMLDivElement>(null);
-  const translate = useRef<HTMLDivElement>(null);
+  const targetRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    if (!band.current || !translate.current) return;
-    const bandRec = band.current.getBoundingClientRect();
-    const progress = -bandRec.top / window.innerHeight;
-    const bg = translate.current;
-    bg.style.transform = `translateY(${progress * 100}px)`;
-  };
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const y = useTransform(scrollYProgress, [0, 1], ["0px", "150px"]);
+
   return (
     <div
-      ref={band}
+      ref={targetRef}
       className="h-[55vh] relative overflow-hidden flex items-center"
     >
-      <div ref={translate} className="absolute -inset-20">
+      <motion.div style={{ y }} className="absolute -inset-20">
         <Image
           loading="eager"
           src={`https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1800&q=80&auto=format&fit=crop`}
           alt={`image band`}
           fill
-          className=" absolute object-cover object-center  bg-cover bg-center sepia-25 contrast-[1.1] saturate-[0.8] "
+          className=" absolute object-cover object-center bg-cover bg-center sepia-25 contrast-[1.1] saturate-[0.8] "
         />
-      </div>
+      </motion.div>
       <div className="absolute inset-0 bg-[rgba(26,20,16,0.72)]"></div>
       <div>
         <div className="relative z-2 py-0 px-13 max-w-195">
