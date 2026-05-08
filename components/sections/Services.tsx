@@ -80,7 +80,7 @@ export default function Services() {
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.3 }}
         className="grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen"
       >
         <SectionHeader

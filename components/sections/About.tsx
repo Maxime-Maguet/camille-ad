@@ -1,6 +1,6 @@
 import SectionHeader from "../ui/SectionHeader";
 import * as motion from "motion/react-client";
-
+import Image from "next/image";
 export default function About() {
   const stats: { value: string; label: string }[] = [
     { value: "2+", label: "Ans exp." },
@@ -26,6 +26,18 @@ export default function About() {
     },
   ];
 
+  const camilleProfil: {
+    img: string;
+    alt: string;
+    name: string;
+    role: string;
+  } = {
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=85&auto=format&fit=crop&sat=-20",
+    alt: "portrait Camille",
+    name: "Camille",
+    role: "Assistante de Direction · Freelance · Toulouse",
+  };
+
   return (
     <section
       id="about"
@@ -35,7 +47,7 @@ export default function About() {
         initial={{ opacity: 0, x: -24 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.3 }}
         className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25"
       >
         <SectionHeader
@@ -109,10 +121,32 @@ export default function About() {
         initial={{ opacity: 0, x: 24 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.3 }}
         className="relative overflow-hidden min-h-[80vh]"
       >
-        {/* photo Phase 5 */}
+        <Image
+          src={camilleProfil.img}
+          alt={camilleProfil.alt}
+          fill
+          loading="eager"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover object-top sepia-15 contrast-[1.05]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(26,20,16,.75) 0%, rgba(26,20,16,.1) 55%, transparent 100%)",
+          }}
+        ></div>
+        <div className="absolute bottom-12 left-12 right-12">
+          <div className="font-display text-[2.2rem]/[1] font-bold italic text-white mb-2">
+            {camilleProfil.name}
+          </div>
+          <div className="text-[0.68rem] font-normal tracking-[.2em] uppercase text-[rgba(253,252,249,.5)] ">
+            {camilleProfil.role}
+          </div>
+        </div>
       </motion.div>
     </section>
   );
