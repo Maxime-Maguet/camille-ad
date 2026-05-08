@@ -91,3 +91,5 @@
 - **Filtre hover** : `sepia(5%) contrast(1.08)`
 - **Transition** : `.4s ease`
 - **Format** : WebP, max 800px de large, qualité 85
+
+Tailwind v4 accepte les valeurs décimales comme gap-1.75, gap-2.5 etc. — pas besoin de brackets arbitraires pour les multiples du spacing scale.

@@ -63,8 +63,8 @@
 ## Phase 3 — Animations Framer Motion 🔄
 
 - [✅] **3.1** Découverte Motion (concepts : `motion.div`, `variants`, `whileInView`)
-- [ ] **3.2** Remplacement des `.reveal` CSS par Motion
-- [ ] **3.3** Stagger animations sur la grille services
+- [✅] **3.2** Remplacement des `.reveal` CSS par Motion
+- [✅] **3.3** Stagger animations sur la grille services
 - [ ] **3.4** Parallax sur la photo band
 - [ ] **3.5** Transitions d'entrée hero
 
