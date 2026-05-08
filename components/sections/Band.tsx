@@ -31,7 +31,13 @@ export default function Band() {
       </motion.div>
       <div className="absolute inset-0 bg-[rgba(26,20,16,0.72)]"></div>
       <div>
-        <div className="relative z-2 py-0 px-13 max-w-195">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="relative z-2 py-0 px-13 max-w-195"
+        >
           <div className="font-display text-[clamp(1.8rem,3.5vw,3.2rem)]/[1.25]  text-white mb-6">
             <strong>Externalisez l&apos;administratif.</strong>
             <br />
@@ -42,7 +48,7 @@ export default function Band() {
           <div className="text-[0.68rem] font-normal tracking-[0.18em] italic  uppercase text-[rgba(253,252,249,.35)] ">
             Camille · Freelance · Toulouse
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
