@@ -1,4 +1,4 @@
-"use client ";
+"use client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,6 +11,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
+import { ContactFormData } from "@/lib/schemas/contact";
+import { sendContactForm } from "@/actions/sendContactForm";
 
 const items = [
   { label: "Ressources Humaines & Paie", value: "Ressources Humaines & Paie" },
@@ -24,6 +27,20 @@ const items = [
 ];
 
 export default function ContactForm() {
+  const [formData, setFormData] = useState<ContactFormData>({
+    nom: "",
+    entreprise: "",
+    email: "",
+    telephone: "",
+    besoin: "",
+    message: "",
+  });
+
+  const handleSubmit = async (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    await sendContactForm(formData);
+  };
+
   const inputClass =
     "h-auto bg-white border-linen text-ink py-[13px] px-4 text-[0.88rem] font-light rounded-none focus:border-bark focus:ring-0 focus-visible:ring-0 focus-visible:border-bark placeholder:text-linen";
 
@@ -31,7 +48,7 @@ export default function ContactForm() {
     "text-[0.62rem] font-medium tracking-[0.16em] uppercase text-stone";
 
   return (
-    <section className="flex flex-col gap-3.5 pl-20 pt-0">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3.5 pl-20 pt-0">
       <div className="grid grid-cols-2 gap-3.5">
         <div className="flex flex-col gap-1.5">
           <Label className={labelClass}>Prénom & Nom</Label>
@@ -40,6 +57,8 @@ export default function ContactForm() {
             required
             placeholder="Jean Dupont"
             className={inputClass}
+            value={formData.nom}
+            onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
           />
         </div>
         <div className="flex flex-col gap-1.5">
@@ -49,6 +68,10 @@ export default function ContactForm() {
             required
             placeholder="Propreté Sud SARL"
             className={inputClass}
+            value={formData.entreprise}
+            onChange={(e) =>
+              setFormData({ ...formData, entreprise: e.target.value })
+            }
           />
         </div>
       </div>
@@ -60,6 +83,10 @@ export default function ContactForm() {
             required
             placeholder="jean@entreprise.fr"
             className={inputClass}
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
           />
         </div>
         <div className="flex flex-col gap-1.5">
@@ -69,13 +96,23 @@ export default function ContactForm() {
             required
             placeholder="06 00 00 00 00"
             className={inputClass}
+            value={formData.telephone}
+            onChange={(e) =>
+              setFormData({ ...formData, telephone: e.target.value })
+            }
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
         <Label className={labelClass}>Besoin</Label>
-        <Select defaultValue="">
+        <Select
+          defaultValue=""
+          value={formData.besoin}
+          onValueChange={(value) =>
+            setFormData({ ...formData, besoin: value ?? "" })
+          }
+        >
           <SelectTrigger className="w-full h-auto rounded-none border-linen py-3.25 px-4 text-[0.88rem] font-light focus:ring-0 focus:border-bark bg-white ">
             <SelectValue placeholder="Choisir un pôle..." />
           </SelectTrigger>
@@ -106,6 +143,10 @@ export default function ContactForm() {
         <Textarea
           className={`min-h-22.5 resize-y ${inputClass}`}
           placeholder="Décrivez brièvement votre situation…"
+          value={formData.message}
+          onChange={(e) =>
+            setFormData({ ...formData, message: e.target.value })
+          }
         />
       </div>
       <button
@@ -114,6 +155,6 @@ export default function ContactForm() {
       >
         Envoyer le message
       </button>
-    </section>
+    </form>
   );
 }

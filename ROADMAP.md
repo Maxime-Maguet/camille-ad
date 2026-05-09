@@ -13,8 +13,8 @@
 | 0     | Setup & Fondations         | ✅ terminé  | 7/7        |
 | 1     | Architecture               | ✅ Terminé  | 4/4        |
 | 2     | Découpage composants       | ✅ Terminé  | 11/11      |
-| 3     | Animations Framer Motion   | 🔄 En cours | 0/5        |
-| 4     | Formulaire & Server Action | ⏸️ À venir  | 0/5        |
+| 3     | Animations Framer Motion   | ✅ En cours | 5/5        |
+| 4     | Formulaire & Server Action | 🔄 À venir  | 0/5        |
 | 5     | Polish, SEO & Légal        | ⏸️ À venir  | 0/9        |
 | 6     | Déploiement Vercel         | ⏸️ À venir  | 0/7        |
 | 7     | Post-lancement             | ⏸️ À venir  | 0/3        |
@@ -60,19 +60,19 @@
 
 ---
 
-## Phase 3 — Animations Framer Motion 🔄
+## Phase 3 — Animations Framer Motion ✅
 
 - [✅] **3.1** Découverte Motion (concepts : `motion.div`, `variants`, `whileInView`)
-- [] **3.2** Remplacement des `.reveal` CSS par Motion
+- [✅] **3.2** Remplacement des `.reveal` CSS par Motion
 - [✅] **3.3** Stagger animations sur la grille services
 - [✅] **3.4** Parallax sur la photo band
 - [✅] **3.5** Transitions d'entrée hero
 
 ---
 
-## Phase 4 — Formulaire & Server Action ⏸️
+## Phase 4 — Formulaire & Server Action 🔄
 
-- [ ] **4.1** Création de la Server Action `sendContactForm`
+- [✅] **4.1** Création de la Server Action `sendContactForm`
 - [ ] **4.2** Setup Resend (compte + API key + domaine vérifié)
 - [ ] **4.3** Validation Zod stricte (schema-driven)
 - [ ] **4.4** Gestion des états client (loading, success, error)
@@ -129,6 +129,15 @@
 - Roadmap validée, design-tokens.md créé
 
 ---
+
+### 9 mai 2026 — Phase 3 complète
+
+- LazyMotion + domAnimation dans Providers.tsx (optimisation bundle ~-50%)
+- Import `m` au lieu de `motion` sur tous les composants
+- Composant Reveal créé (direction: up/left/right, whileInView, once)
+- Reveal appliqué : About, Services header, Band, IASection, CTAStrip, Contact
+- Hero et stagger Services gardent m.div direct (animate au mount / stagger)
+- overflow-x-hidden sur body (fix scrollbar horizontale pendant animations)
 
 ## 🎯 Notes pour les futures sessions Claude
 
