@@ -1,5 +1,5 @@
 import Ticker from "./Ticker";
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
 
 export default function Hero() {
   return (
@@ -10,7 +10,7 @@ export default function Hero() {
       </div>
 
       <div className="relative flex flex-col justify-center px-13 pt-16.5">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
@@ -18,9 +18,9 @@ export default function Hero() {
         >
           <span className="w-7 h-px bg-linen" />
           Assistante de Direction Freelance · Toulouse
-        </motion.div>
+        </m.div>
 
-        <motion.h1
+        <m.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35, ease: [0.4, 0, 0.2, 1] }}
@@ -29,9 +29,9 @@ export default function Hero() {
           <span className="block">L&apos;expertise</span>
           <span className="block italic font-normal text-stone">qui vous</span>
           <span className="block">libère.</span>
-        </motion.h1>
+        </m.h1>
 
-        <motion.div
+        <m.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.7, ease: [0.4, 0, 0.2, 1] }}
@@ -40,7 +40,7 @@ export default function Hero() {
         />
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8, ease: [0.4, 0, 0.2, 1] }}
@@ -68,7 +68,7 @@ export default function Hero() {
             Prendre contact
           </a>
         </div>
-      </motion.div>
+      </m.div>
 
       <Ticker />
     </section>

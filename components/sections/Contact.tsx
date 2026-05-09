@@ -1,6 +1,6 @@
 import ContactForm from "./ContactForm";
 import SectionHeader from "../ui/SectionHeader";
-
+import Reveal from "../ui/Reveal";
 const ROWS: { label: string; value: string }[] = [
   { label: "Email", value: "camille@domaine.fr" },
   { label: "Zone", value: "Toulouse & périphérie" },
@@ -12,7 +12,8 @@ export default function Contact() {
     <section id="contact" className="px-13 pt-25 pb-25 bg-parch">
       <div className="grid grid-cols-[1fr_1px_1.2fr] items-start">
         {/*LEFT CONTENT */}
-        <div className="pr-20 border-r border-linen">
+
+        <Reveal direction={"left"} className={"pr-20 border-r border-linen"}>
           <SectionHeader
             label="Contact"
             title="Parlons de"
@@ -45,13 +46,15 @@ export default function Contact() {
               sans engagement.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/*SEPARATION */}
         <div className="bg-linen self-stretch"></div>
 
         {/*CONTACT FORM */}
-        <ContactForm />
+        <Reveal direction="right">
+          <ContactForm />
+        </Reveal>
       </div>
     </section>
   );

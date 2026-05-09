@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 import Nav from "@/components/sections/Nav";
 import Footer from "@/components/sections/Footer";
+import Providers from "@/components/Providers";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -35,10 +36,12 @@ export default function RootLayout({
       lang="fr"
       className={cn(playfair.variable, instrumentSans.variable, "font-sans")}
     >
-      <body>
-        <Nav />
-        {children}
-        <Footer />
+      <body className="overflow-x-hidden">
+        <Providers>
+          <Nav />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

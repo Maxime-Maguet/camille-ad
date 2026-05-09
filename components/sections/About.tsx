@@ -1,6 +1,7 @@
 import SectionHeader from "../ui/SectionHeader";
-import * as motion from "motion/react-client";
 import Image from "next/image";
+import Reveal from "../ui/Reveal";
+
 export default function About() {
   const stats: { value: string; label: string }[] = [
     { value: "2+", label: "Ans exp." },
@@ -43,12 +44,9 @@ export default function About() {
       id="about"
       className="grid grid-cols-[1fr_2px_1fr] overflow-hidden"
     >
-      <motion.div
-        initial={{ opacity: 0, x: -24 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="flex flex-col justify-center pl-13 pr-16 pt-25 pb-25"
+      <Reveal
+        direction={"left"}
+        className={"flex flex-col justify-center pl-13 pr-16 pt-25 pb-25"}
       >
         <SectionHeader
           label={`À propos`}
@@ -114,15 +112,11 @@ export default function About() {
             );
           })}
         </div>
-      </motion.div>
-
+      </Reveal>
       <div className="bg-linen" />
-      <motion.div
-        initial={{ opacity: 0, x: 24 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="relative overflow-hidden min-h-[80vh]"
+      <Reveal
+        direction={"right"}
+        className={"relative overflow-hidden min-h-[80vh]"}
       >
         <Image
           src={camilleProfil.img}
@@ -147,7 +141,7 @@ export default function About() {
             {camilleProfil.role}
           </div>
         </div>
-      </motion.div>
+      </Reveal>
     </section>
   );
 }

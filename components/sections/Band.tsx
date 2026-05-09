@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import { useScroll, useTransform } from "motion/react";
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
+import Reveal from "../ui/Reveal";
 import Image from "next/image";
 
 export default function Band() {
@@ -20,7 +21,7 @@ export default function Band() {
       ref={targetRef}
       className="h-[55vh] relative overflow-hidden flex items-center"
     >
-      <motion.div style={{ y }} className="absolute -inset-20">
+      <m.div style={{ y }} className="absolute -inset-20">
         <Image
           loading="eager"
           src={`https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1800&q=80&auto=format&fit=crop`}
@@ -28,15 +29,12 @@ export default function Band() {
           fill
           className=" absolute object-cover object-center bg-cover bg-center sepia-25 contrast-[1.1] saturate-[0.8] "
         />
-      </motion.div>
+      </m.div>
       <div className="absolute inset-0 bg-[rgba(26,20,16,0.72)]"></div>
       <div>
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="relative z-2 py-0 px-13 max-w-195"
+        <Reveal
+          direction={"up"}
+          className={"relative z-2 py-0 px-13 max-w-195"}
         >
           <div className="font-display text-[clamp(1.8rem,3.5vw,3.2rem)]/[1.25]  text-white mb-6">
             <strong>Externalisez l&apos;administratif.</strong>
@@ -48,7 +46,7 @@ export default function Band() {
           <div className="text-[0.68rem] font-normal tracking-[0.18em] italic  uppercase text-[rgba(253,252,249,.35)] ">
             Camille · Freelance · Toulouse
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </div>
   );

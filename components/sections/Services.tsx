@@ -1,6 +1,8 @@
 import Image from "next/image";
 import SectionHeader from "../ui/SectionHeader";
-import * as motion from "motion/react-client";
+
+import Reveal from "../ui/Reveal";
+import * as m from "motion/react-m";
 
 export default function Services() {
   const services: {
@@ -76,12 +78,11 @@ export default function Services() {
 
   return (
     <section id="prestations" className="bg-white px-13 pt-25 pb-25">
-      <motion.div
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
-        viewport={{ once: true, amount: 0.3 }}
-        className="grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen"
+      <Reveal
+        direction="up"
+        className={
+          "grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen"
+        }
       >
         <SectionHeader
           label={`Prestations`}
@@ -92,9 +93,9 @@ export default function Services() {
           Sur mesure — ponctuel, mensuel ou long terme. Pas de forfait rigide,
           juste ce dont vous avez besoin.
         </p>
-      </motion.div>
+      </Reveal>
 
-      <motion.div
+      <m.div
         variants={wrapperVariants}
         initial="hidden"
         whileInView="visible"
@@ -102,7 +103,7 @@ export default function Services() {
         className="grid grid-cols-3 gap-px bg-linen "
       >
         {services.map((item, index) => (
-          <motion.div
+          <m.div
             key={index}
             variants={itemVariants}
             className="group bg-white py-12 px-9 flex flex-col relative overflow-hidden transition-colors duration-300 ease-in-out hover:bg-parch after:content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:h-0.5 after:bg-ink after:scale-x-0 after:origin-left after:transition-transform after:duration-500 hover:after:scale-x-100"
@@ -138,9 +139,9 @@ export default function Services() {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import * as motion from "motion/react-client";
+import * as m from "motion/react-m";
 
 import { ReactNode } from "react";
 
@@ -21,7 +21,7 @@ export default function Reveal({
   className,
 }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       initial={itemsVariants[direction ?? "up"].initial}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
@@ -29,6 +29,6 @@ export default function Reveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
