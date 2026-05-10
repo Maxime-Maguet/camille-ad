@@ -36,6 +36,7 @@ export default function ContactForm() {
     telephone: "",
     besoin: "",
     message: "",
+    honeypot: "",
   });
 
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -164,7 +165,15 @@ export default function ContactForm() {
           }
         />
       </div>
-
+      {/* Honeypot anti-bot — champ caché, ne doit jamais être rempli par un humain */}
+      <input
+        type="text"
+        value={formData.honeypot}
+        onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+        style={{ display: "none" }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
       <button
         type="submit"
         disabled={status === "loading"}

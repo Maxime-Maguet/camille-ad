@@ -2,6 +2,8 @@
 
 import { Resend } from "resend";
 import { contactSchema, ContactFormData } from "@/lib/schemas/contact";
+import { getInternalEmailHtml } from "@/lib/emails/internal";
+import { getConfirmationEmailHtml } from "@/lib/emails/confirmation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,24 +12,29 @@ export async function sendContactForm(data: ContactFormData) {
   if (!result.success) {
     return { success: false, message: "Formulaire invalide." };
   }
+
   try {
-    await resend.emails.send({
-      from: "Camille Site <onboarding@resend.dev>",
-      to: ["camille.mcofficemanager@gmail.com"],
-      subject: result.data.besoin,
-      html: `<h2>Nouveau message depuis le site</h2>
-  <p><strong>Nom : ${result.data.nom}</strong> </p>
-  <p><strong>Entreprise : ${result.data.entreprise}</strong> </p>
-  <p><strong>Email : ${result.data.email}</strong> </p>
-  <p><strong>Téléphone : ${result.data.telephone}</strong> </p>
-  <p><strong>Besoin : ${result.data.besoin}</strong> </p>
-  <hr />
-  <p><strong>Message : ${result.data.message}</strong></p>
-  <p></p>`,
-    });
+    const [internalResult, confirmationResult] = await Promise.all([
+      // Email interne — vers Camille
+      resend.emails.send({
+        from: "MC Office Manager <onboarding@resend.dev>",
+        to: ["camille.mcofficemanager@gmail.com"],
+        subject: `Nouvelle demande — ${result.data.besoin}`,
+        html: getInternalEmailHtml(result.data),
+        replyTo: result.data.email,
+      }),
+      // Email de confirmation — vers le client
+      resend.emails.send({
+        from: "Camille Maguet <onboarding@resend.dev>",
+        to: ["camille.mcofficemanager@gmail.com"], // à modifier quand on aura le nom de domaine vérifié sur resend
+        subject: "Votre message a bien été reçu",
+        html: getConfirmationEmailHtml(result.data),
+      }),
+    ]);
+    console.log("Resend results :", internalResult, confirmationResult);
     return { success: true, message: "Message envoyé avec succès" };
   } catch (error: unknown) {
-    console.error(error);
+    console.error("Erreur envoi email :", error);
     return { success: false, message: "Erreur lors de l'envoi. Réessayez" };
   }
 }
