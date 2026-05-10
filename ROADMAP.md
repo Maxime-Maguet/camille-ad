@@ -73,7 +73,7 @@
 ## Phase 4 — Formulaire & Server Action 🔄
 
 - [✅] **4.1** Création de la Server Action `sendContactForm`
-- [ ] **4.2** Setup Resend (compte + API key + domaine vérifié)
+- [✅] **4.2** Setup Resend (compte + API key + domaine vérifié)
 - [ ] **4.3** Validation Zod stricte (schema-driven)
 - [ ] **4.4** Gestion des états client (loading, success, error)
 - [ ] **4.5** Email template HTML pour Resend

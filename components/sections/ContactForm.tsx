@@ -26,6 +26,8 @@ const items = [
   { label: "Plusieurs prestations", value: "Plusieurs prestations" },
 ];
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<ContactFormData>({
     nom: "",
@@ -36,9 +38,25 @@ export default function ContactForm() {
     message: "",
   });
 
+  const [status, setStatus] = useState<FormStatus>("idle");
+
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    await sendContactForm(formData);
+    if (
+      formData.besoin === "" ||
+      formData.message === "" ||
+      formData.nom === "" ||
+      formData.entreprise === "" ||
+      formData.telephone === ""
+    )
+      return setStatus("error");
+    setStatus("loading");
+    const result = await sendContactForm(formData);
+    if (result.success) {
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
   };
 
   const inputClass =
@@ -54,7 +72,6 @@ export default function ContactForm() {
           <Label className={labelClass}>Prénom & Nom</Label>
           <Input
             type="text"
-            required
             placeholder="Jean Dupont"
             className={inputClass}
             value={formData.nom}
@@ -65,7 +82,6 @@ export default function ContactForm() {
           <Label className={labelClass}>Entreprise</Label>
           <Input
             type="text"
-            required
             placeholder="Propreté Sud SARL"
             className={inputClass}
             value={formData.entreprise}
@@ -80,7 +96,6 @@ export default function ContactForm() {
           <Label className={labelClass}>Email</Label>
           <Input
             type="email"
-            required
             placeholder="jean@entreprise.fr"
             className={inputClass}
             value={formData.email}
@@ -93,8 +108,8 @@ export default function ContactForm() {
           <Label className={labelClass}>Téléphone</Label>
           <Input
             type="text"
-            required
             placeholder="06 00 00 00 00"
+            pattern="[0-9]{10}"
             className={inputClass}
             value={formData.telephone}
             onChange={(e) =>
@@ -149,12 +164,24 @@ export default function ContactForm() {
           }
         />
       </div>
+
       <button
         type="submit"
+        disabled={status === "loading"}
         className="text-[0.75rem] font-medium tracking-widest uppercase text-white bg-ink py-3.75 px-8 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-all duration-300 ease-in-out"
       >
-        Envoyer le message
+        {status === "loading" ? "Envoi en cours..." : "Envoyer le message"}
       </button>
+      {status === "error" && (
+        <p className="text-[0.75rem] font-medium tracking-wide text-red-700">
+          Formulaire invalide. Vérifiez vos informations
+        </p>
+      )}
+      {status === "success" && (
+        <p className="text-[0.75rem] font-medium tracking-wide text-bark">
+          Message envoyé avec succès !
+        </p>
+      )}
     </form>
   );
 }
