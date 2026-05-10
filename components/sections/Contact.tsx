@@ -10,7 +10,7 @@ const ROWS: { label: string; value: string }[] = [
 export default function Contact() {
   return (
     <section id="contact" className="px-13 pt-25 pb-25 bg-parch">
-      <div className="grid grid-cols-[1fr_1px_1.2fr] items-start">
+      <div className="grid grid-cols-[1fr_1.2fr] items-start">
         {/*LEFT CONTENT */}
 
         <Reveal direction={"left"} className={"pr-20 border-r border-linen"}>
@@ -47,9 +47,6 @@ export default function Contact() {
             </p>
           </div>
         </Reveal>
-
-        {/*SEPARATION */}
-        <div className="bg-linen self-stretch"></div>
 
         {/*CONTACT FORM */}
         <Reveal direction="right">
