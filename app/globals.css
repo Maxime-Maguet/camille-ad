@@ -71,11 +71,10 @@
   outline-offset: 3px;
 }
 
-html {
-  scroll-behavior: smooth;
+.section-px {
+  @apply px-5 lg:px-13;
 }
 
-html,
 body {
   position: relative;
 }

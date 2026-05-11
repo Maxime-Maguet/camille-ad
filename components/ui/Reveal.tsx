@@ -26,7 +26,7 @@ export default function Reveal({
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       transition={{ duration: 0.85, ease: [0.4, 0, 0.2, 1] }}
       viewport={{ once: true, amount: 0.3 }}
-      className={className}
+      className={`relative ${className ?? ""}`}
     >
       {children}
     </m.div>

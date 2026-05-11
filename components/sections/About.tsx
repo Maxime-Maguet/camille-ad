@@ -42,11 +42,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="grid grid-cols-[1fr_2px_1fr] overflow-hidden"
+      className="grid lg:grid-cols-[1fr_2px_1fr] overflow-hidden"
     >
       <Reveal
         direction={"left"}
-        className={"flex flex-col justify-center pl-13 pr-16 pt-25 pb-25"}
+        className={
+          "flex flex-col justify-center px-5 lg:pl-13 lg:pr-16 pt-25 pb-25"
+        }
       >
         <SectionHeader
           label={`À propos`}
@@ -113,10 +115,10 @@ export default function About() {
           })}
         </div>
       </Reveal>
-      <div className="bg-linen" />
+      <div className="bg-linen hidden lg:block" />
       <Reveal
         direction={"right"}
-        className={"relative overflow-hidden min-h-[80vh]"}
+        className={"relative overflow-hidden min-h-[40vh] lg:min-h-[80vh]"}
       >
         <Image
           src={camilleProfil.img}

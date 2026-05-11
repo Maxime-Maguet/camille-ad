@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import ScrollToTopLink from "../ui/ScrollToTopLink";
 export default function Footer() {
   const items: { label: string; href: string }[] = [
     { label: "À propos", href: "/#about" },
@@ -14,14 +14,14 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-ink py-7 px-13 flex items-center gap-8">
+    <footer className="bg-ink py-7 section-px flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8">
       <div className="flex-1">
-        <Link
+        <ScrollToTopLink
           href="/"
           className="font-display text-[1.1rem] font-bold text-white/70"
         >
           Camille.
-        </Link>
+        </ScrollToTopLink>
       </div>
 
       <nav aria-label="Navigation pied de page">
@@ -39,7 +39,7 @@ export default function Footer() {
         </ul>
       </nav>
 
-      <div className="flex-1 flex items-center justify-end gap-6">
+      <div className="flex-1 flex items-center justify-start lg:justify-end gap-6">
         {legal.map((item, i) => (
           <Link
             key={i}

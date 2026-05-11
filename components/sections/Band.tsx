@@ -34,7 +34,7 @@ export default function Band() {
       <div>
         <Reveal
           direction={"up"}
-          className={"relative z-2 py-0 px-13 max-w-195"}
+          className={"relative z-2 py-0 section-px max-w-195"}
         >
           <div className="font-display text-[clamp(1.8rem,3.5vw,3.2rem)]/[1.25]  text-white mb-6">
             <strong>Externalisez l&apos;administratif.</strong>

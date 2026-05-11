@@ -34,11 +34,11 @@ export default function IASection() {
   return (
     <section
       id="ia"
-      className="bg-ink grid grid-cols-[1fr_1px_1fr] min-h-[70vh]"
+      className="bg-ink grid grid-cols-1 lg:grid-cols-[1fr_1px_1fr] min-h-[70vh]"
     >
       {/* COLONNE GAUCHE*/}
       <Reveal direction={"up"}>
-        <div className="py-25 pr-20 pl-13">
+        <div className="py-15 lg:py-25 px-5 lg:pr-20 lg:pl-13">
           <SectionHeader
             label={`Accompagnement IA`}
             title={
@@ -89,12 +89,12 @@ export default function IASection() {
       </Reveal>
       {/*SEPARATEUR */}
 
-      <div className="bg-[rgba(255,255,255,.05)]"></div>
+      <div className="hidden lg:block bg-[rgba(255,255,255,.05)]"></div>
 
       {/*COLONNE DROITE*/}
 
       <Reveal direction={"right"}>
-        <div className="py-25 pr-13 pl-20 flex flex-col justify-center">
+        <div className="py-15 lg:py-25 px-5 lg:pr-13 lg:pl-20 flex flex-col justify-center">
           <Image
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
             alt="Tableau de bord analytique illustrant l'automatisation des process"

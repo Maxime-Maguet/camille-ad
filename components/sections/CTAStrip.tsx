@@ -5,7 +5,7 @@ export default function CTAStrip() {
     <Reveal direction={"up"}>
       <div
         id="cta-strip"
-        className="bg-sand py-20 px-13 flex items-center justify-between gap-15 border-b border-linen "
+        className="bg-sand py-20 section-px flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-15 border-b border-linen"
       >
         <div className="font-display text-[clamp(1.6rem,3vw,2.8rem)]/[1.1] font-bold tracking-[-0.02em] text-ink">
           Prêt à externaliser <br /> votre administration ?

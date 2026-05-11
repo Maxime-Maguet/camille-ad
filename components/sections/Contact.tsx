@@ -9,11 +9,14 @@ const ROWS: { label: string; value: string }[] = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-13 pt-25 pb-25 bg-parch">
-      <div className="grid grid-cols-[1fr_1.2fr] items-start">
+    <section id="contact" className="section-px pt-25 pb-25 bg-parch">
+      <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1.2fr] items-start gap-12 lg:gap-0">
         {/*LEFT CONTENT */}
 
-        <Reveal direction={"left"} className={"pr-20 border-r border-linen"}>
+        <Reveal
+          direction={"left"}
+          className={"lg:pr-20 lg:border-r border-linen"}
+        >
           <SectionHeader
             label="Contact"
             title="Parlons de"

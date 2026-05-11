@@ -78,7 +78,7 @@ export default function ContactForm() {
           onSubmit={handleSubmit}
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.3, ease: "easeIn" }}
-          className="flex flex-col gap-3.5 pl-20 pt-0"
+          className="flex flex-col gap-3.5 lg:pl-20 pt-0"
           aria-label="Formulaire de contact"
           noValidate
         >

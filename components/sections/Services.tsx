@@ -77,11 +77,11 @@ export default function Services() {
   };
 
   return (
-    <section id="prestations" className="bg-white px-13 pt-25 pb-25">
+    <section id="prestations" className="bg-white section-px pt-25 pb-25">
       <Reveal
         direction="up"
         className={
-          "grid grid-cols-2 gap-15 items-end mb-16 pb-12 border-b border-linen"
+          "flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-15 items-end mb-16 pb-12 border-b border-linen"
         }
       >
         <SectionHeader
@@ -100,7 +100,7 @@ export default function Services() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-3 gap-px bg-linen "
+        className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-linen"
       >
         {services.map((item, index) => (
           <m.div
