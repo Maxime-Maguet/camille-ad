@@ -23,7 +23,7 @@ export default function Band() {
     >
       <m.div style={{ y }} className="absolute -inset-20">
         <Image
-          loading="eager"
+          loading="lazy"
           src={`https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1800&q=80&auto=format&fit=crop`}
           alt="Poste de travail moderne — bureau administratif"
           fill

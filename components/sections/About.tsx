@@ -122,7 +122,7 @@ export default function About() {
           src={camilleProfil.img}
           alt={camilleProfil.alt}
           fill
-          loading="eager"
+          loading="lazy"
           sizes="(max-width: 1024px) 100vw, 50vw"
           className="object-cover object-top sepia-15 contrast-[1.05]"
         />

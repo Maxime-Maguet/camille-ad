@@ -114,7 +114,7 @@ export default function Services() {
                 alt={item.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                loading="eager"
+                loading="lazy"
                 className="object-cover sepia-20 contrast-[1.05] saturate-[0.9] transition-[filter] duration-400 ease-in-out group-hover:sepia-5 group-hover:contrast-[1.08]"
               />
             </div>

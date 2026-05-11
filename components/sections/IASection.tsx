@@ -101,7 +101,7 @@ export default function IASection() {
             loading="lazy"
             width={0}
             height={0}
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             style={{ width: "100%", height: "220px" }}
             className="object-cover sepia-30 contrast-[1.05] saturate-[0.7]"
           />
