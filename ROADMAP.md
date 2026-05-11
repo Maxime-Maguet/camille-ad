@@ -96,13 +96,13 @@
 
 ## Phase 6 — Déploiement Vercel 🔄
 
-- [ ] **6.1** Push final sur GitHub
-- [ ] **6.2** Connexion Vercel + premier déploiement
-- [ ] **6.3** Variables d'environnement (Resend API key)
+- [✅] **6.1** Push final sur GitHub
+- [✅] **6.2** Connexion Vercel + premier déploiement
+- [✅] **6.3** Variables d'environnement (Resend API key)
 - [ ] **6.4** Domaine personnalisé (camille-ad-toulouse.fr ou variante)
-- [ ] **6.5** Activation Vercel Analytics
-- [ ] **6.6** Tests en production (toutes sections, formulaire, légal)
-- [ ] **6.7** Handover à Camille (doc minimale d'utilisation)
+- [✅] **6.5** Activation Vercel Analytics
+- [✅] **6.6** Tests en production (toutes sections, formulaire, légal)
+- [✅] **6.7** Handover à Camille (doc minimale d'utilisation)
 
 ---
 
