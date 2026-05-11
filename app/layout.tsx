@@ -69,6 +69,46 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${baseUrl}/#business`,
+  name: "Camille AD",
+  url: baseUrl,
+  image: `${baseUrl}/og-image.png`,
+  description:
+    "Assistante de direction freelance spécialisée dans le secteur de la propreté à Toulouse. Externalisation RH, paie, comptabilité et accompagnement IA pour TPE/PME.",
+  telephone: "+33638376182",
+  email: "camille.mcofficemanager@gmail.com",
+  priceRange: "€€",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Toulouse",
+    addressRegion: "Occitanie",
+    postalCode: "31000",
+    addressCountry: "FR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.6047,
+    longitude: 1.4442,
+  },
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 43.6047,
+      longitude: 1.4442,
+    },
+    geoRadius: "50000",
+  },
+  serviceType: [
+    "Administration et ressources humaines",
+    "Comptabilité et facturation",
+    "Accompagnement intelligence artificielle",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,6 +120,10 @@ export default function RootLayout({
       className={cn(playfair.variable, instrumentSans.variable, "font-sans")}
     >
       <body className="overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>
           <Nav />
           {children}
