@@ -1,2 +1,2 @@
-export const baseUrl = "https://camille-ad-toulouse.fr";
+export const baseUrl = "https://camille-ad.vercel.app";
 export const siteName = "Camille AD";
