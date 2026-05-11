@@ -12,6 +12,8 @@ export default function SuccessMessage() {
     >
       {/* Cercle + Check SVG */}
       <svg
+        aria-label="Message envoyé avec succès"
+        role="img"
         width="80"
         height="80"
         viewBox="0 0 80 80"

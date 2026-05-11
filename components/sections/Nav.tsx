@@ -19,6 +19,7 @@ export default function Nav() {
 
   return (
     <nav
+      aria-label="Navigation principale"
       className={cn(
         "fixed z-300 flex items-center justify-between px-13 h-16.5 transition-[background,border-color] duration-400 w-full border-b border-transparent",
         isPinned && "bg-parch/97 backdrop-blur-md border-linen",

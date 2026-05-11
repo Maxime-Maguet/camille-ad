@@ -26,6 +26,7 @@ export default function Ticker() {
         {TICKER_ITEMS.map((item, i) => (
           <span
             key={`dup-${i}`}
+            aria-hidden="true"
             className="text-xs font-normal tracking-[0.16em] uppercase text-white/40 px-10 border-r border-white/10 shrink-0"
           >
             {item}

@@ -97,7 +97,7 @@ export default function IASection() {
         <div className="py-25 pr-13 pl-20 flex flex-col justify-center">
           <Image
             src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format&fit=crop"
-            alt="Dashboard"
+            alt="Tableau de bord analytique illustrant l'automatisation des process"
             loading="lazy"
             width={0}
             height={0}

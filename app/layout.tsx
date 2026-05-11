@@ -126,7 +126,7 @@ export default function RootLayout({
         />
         <Providers>
           <Nav />
-          {children}
+          <main>{children}</main>
           <Footer />
         </Providers>
       </body>

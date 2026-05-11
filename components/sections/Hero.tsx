@@ -3,7 +3,10 @@ import * as m from "motion/react-m";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen grid grid-rows-[1fr_auto_auto] pt-16.5 relative overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen grid grid-rows-[1fr_auto_auto] pt-16.5 relative overflow-hidden"
+    >
       <div className="absolute top-22.5 right-13 text-right text-[0.62rem] leading-[1.8] tracking-[0.2em] uppercase text-linen">
         Toulouse · 2026 <br />
         Freelance · Vol. I

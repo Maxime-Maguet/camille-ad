@@ -25,7 +25,7 @@ export default function Band() {
         <Image
           loading="eager"
           src={`https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1800&q=80&auto=format&fit=crop`}
-          alt={`image band`}
+          alt="Poste de travail moderne — bureau administratif"
           fill
           className=" absolute object-cover object-center bg-cover bg-center sepia-25 contrast-[1.1] saturate-[0.8] "
         />
