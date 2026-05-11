@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { baseUrl, siteName } from "@/lib/seo";
 import { Playfair_Display, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -20,12 +21,10 @@ const instrumentSans = Instrument_Sans({
   weight: ["400", "500"],
 });
 
-const baseUrl = "https://camille-ad-toulouse.fr";
-
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    template: "%s | Camille AD",
+    template: `%s | ${siteName}`,
     default: "Camille AD — Assistante de Direction Freelance Toulouse",
   },
   description:
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     description:
       "Externalisation RH, comptabilité et accompagnement IA pour les entreprises du secteur propreté. Toulouse et périphérie.",
     url: baseUrl,
-    siteName: "Camille AD",
+    siteName,
     locale: "fr_FR",
     type: "website",
     images: [

@@ -83,8 +83,8 @@
 ## Phase 5 — Polish, SEO & Légal (critique, pas bonus) 🔄
 
 - [ ] **5.1** Vérification responsive mobile (breakpoints 768px, 1024px)
-- [ ] **5.2** SEO technique : metadata, Open Graph, Twitter cards
-- [ ] **5.3** Sitemap (`app/sitemap.ts`) + robots.txt (`app/robots.ts`)
+- [✅] **5.2** SEO technique : metadata, Open Graph, Twitter cards
+- [✅] **5.3** Sitemap (`app/sitemap.ts`) + robots.txt (`app/robots.ts`)
 - [ ] **5.4** Schema.org JSON-LD LocalBusiness (SEO local Toulouse)
 - [ ] **5.5** Accessibilité : alt sur images, ARIA, focus states, contrastes
 - [ ] **5.6** Optimisation images (`next/image`)
