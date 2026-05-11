@@ -8,16 +8,16 @@
 
 ## 📊 Vue d'ensemble
 
-| Phase | Nom                        | Statut     | Avancement |
-| ----- | -------------------------- | ---------- | ---------- |
-| 0     | Setup & Fondations         | ✅ terminé | 7/7        |
-| 1     | Architecture               | ✅ Terminé | 4/4        |
-| 2     | Découpage composants       | ✅ Terminé | 11/11      |
-| 3     | Animations Framer Motion   | ✅ Terminé | 5/5        |
-| 4     | Formulaire & Server Action | ✅ Terminé | 5/5        |
-| 5     | Polish, SEO & Légal        | 🔄 À venir | 0/9        |
-| 6     | Déploiement Vercel         | ⏸️ À venir | 0/7        |
-| 7     | Post-lancement             | ⏸️ À venir | 0/3        |
+| Phase | Nom                        | Statut      | Avancement |
+| ----- | -------------------------- | ----------- | ---------- |
+| 0     | Setup & Fondations         | ✅ terminé  | 7/7        |
+| 1     | Architecture               | ✅ Terminé  | 4/4        |
+| 2     | Découpage composants       | ✅ Terminé  | 11/11      |
+| 3     | Animations Framer Motion   | ✅ Terminé  | 5/5        |
+| 4     | Formulaire & Server Action | ✅ Terminé  | 5/5        |
+| 5     | Polish, SEO & Légal        | ✅ Terminé  | 9/9        |
+| 6     | Déploiement Vercel         | 🔄 En cours | 0/7        |
+| 7     | Post-lancement             | ⏸️ À venir  | 0/3        |
 
 **Légende** : ✅ Terminée · 🔄 En cours · ⏸️ À venir · ⚠️ Bloquée
 
@@ -80,9 +80,9 @@
 
 ---
 
-## Phase 5 — Polish, SEO & Légal (critique, pas bonus) 🔄
+## Phase 5 — Polish, SEO & Légal (critique, pas bonus) ✅
 
-- [ ] **5.1** Vérification responsive mobile (breakpoints 768px, 1024px)
+- [✅] **5.1** Vérification responsive mobile (breakpoints 768px, 1024px)
 - [✅] **5.2** SEO technique : metadata, Open Graph, Twitter cards
 - [✅] **5.3** Sitemap (`app/sitemap.ts`) + robots.txt (`app/robots.ts`)
 - [✅] **5.4** Schema.org JSON-LD LocalBusiness (SEO local Toulouse)
@@ -90,11 +90,11 @@
 - [✅] **5.6** Optimisation images (`next/image`)
 - [✅] **5.7** Page **Mentions légales** (LCEN 2004 — obligatoire)
 - [✅] **5.8** Page **Politique de confidentialité** (RGPD — obligatoire)
-- [ ] **5.9** Bandeau cookies (si Vercel Analytics actif) + Lighthouse audit
+- [✅] **5.9** Bandeau cookies (si Vercel Analytics actif) + Lighthouse audit
 
 ---
 
-## Phase 6 — Déploiement Vercel ⏸️
+## Phase 6 — Déploiement Vercel 🔄
 
 - [ ] **6.1** Push final sur GitHub
 - [ ] **6.2** Connexion Vercel + premier déploiement
