@@ -20,10 +20,54 @@ const instrumentSans = Instrument_Sans({
   weight: ["400", "500"],
 });
 
+const baseUrl = "https://camille-ad-toulouse.fr";
+
 export const metadata: Metadata = {
-  title: "Camille — Assistante de Direction Freelance · Toulouse",
+  metadataBase: new URL(baseUrl),
+  title: {
+    template: "%s | Camille AD",
+    default: "Camille AD — Assistante de Direction Freelance Toulouse",
+  },
   description:
-    "Assistante de direction freelance spécialisée secteur propreté. RH, comptabilité, accompagnement IA. Toulouse et périphérie.",
+    "Assistante de direction freelance spécialisée secteur propreté à Toulouse. Externalisation RH, paie, comptabilité et accompagnement IA. TPE/PME 30–100 salariés.",
+  openGraph: {
+    title: "Camille AD — Assistante de Direction Freelance Toulouse",
+    description:
+      "Externalisation RH, comptabilité et accompagnement IA pour les entreprises du secteur propreté. Toulouse et périphérie.",
+    url: baseUrl,
+    siteName: "Camille AD",
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Camille AD — Assistante de Direction Freelance Toulouse",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Camille AD — Assistante de Direction Freelance Toulouse",
+    description:
+      "Externalisation RH, comptabilité et accompagnement IA pour les entreprises du secteur propreté. Toulouse et périphérie.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
