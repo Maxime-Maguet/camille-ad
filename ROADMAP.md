@@ -87,9 +87,9 @@
 - [✅] **5.3** Sitemap (`app/sitemap.ts`) + robots.txt (`app/robots.ts`)
 - [✅] **5.4** Schema.org JSON-LD LocalBusiness (SEO local Toulouse)
 - [✅] **5.5** Accessibilité : alt sur images, ARIA, focus states, contrastes
-- [ ] **5.6** Optimisation images (`next/image`)
-- [ ] **5.7** Page **Mentions légales** (LCEN 2004 — obligatoire)
-- [ ] **5.8** Page **Politique de confidentialité** (RGPD — obligatoire)
+- [✅] **5.6** Optimisation images (`next/image`)
+- [✅] **5.7** Page **Mentions légales** (LCEN 2004 — obligatoire)
+- [✅] **5.8** Page **Politique de confidentialité** (RGPD — obligatoire)
 - [ ] **5.9** Bandeau cookies (si Vercel Analytics actif) + Lighthouse audit
 
 ---

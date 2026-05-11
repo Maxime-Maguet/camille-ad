@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Nav() {
   const [isPinned, setIsPinned] = useState(false);
@@ -25,55 +26,55 @@ export default function Nav() {
         isPinned && "bg-parch/97 backdrop-blur-md border-linen",
       )}
     >
-      <a
-        href="#"
+      <Link
+        href="/"
         className="font-display text-xl font-bold text-ink tracking-[-0.01em]"
       >
         Camille
         <span className="block font-sans text-[0.6rem] font-normal tracking-[0.22em] uppercase text-stone -mt-0.5">
           Assistante de Direction
         </span>
-      </a>
+      </Link>
       <ul className="flex gap-9 list-none items-center">
         <li>
-          <a
-            className=" text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
-            href="#about"
+          <Link
+            className="text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
+            href="/#about"
           >
             À propos
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            className=" text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
-            href="#prestations"
+          <Link
+            className="text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
+            href="/#prestations"
           >
             Prestations
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            className=" text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
-            href="#ia"
+          <Link
+            className="text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
+            href="/#ia"
           >
             IA & Entreprises
-          </a>
+          </Link>
         </li>
         <li>
-          <a
-            className=" text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
-            href="#contact"
+          <Link
+            className="text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
+            href="/#contact"
           >
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
-      <a
-        href="#contact"
+      <Link
+        href="/#contact"
         className="text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink py-2.5 px-6 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-250"
       >
         Me contacter
-      </a>
+      </Link>
     </nav>
   );
 }
