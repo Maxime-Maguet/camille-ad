@@ -75,6 +75,11 @@
   @apply px-5 lg:px-13;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+html,
 body {
   position: relative;
 }
