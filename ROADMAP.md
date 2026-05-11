@@ -8,16 +8,16 @@
 
 ## 📊 Vue d'ensemble
 
-| Phase | Nom                        | Statut      | Avancement |
-| ----- | -------------------------- | ----------- | ---------- |
-| 0     | Setup & Fondations         | ✅ terminé  | 7/7        |
-| 1     | Architecture               | ✅ Terminé  | 4/4        |
-| 2     | Découpage composants       | ✅ Terminé  | 11/11      |
-| 3     | Animations Framer Motion   | ✅ En cours | 5/5        |
-| 4     | Formulaire & Server Action | 🔄 À venir  | 0/5        |
-| 5     | Polish, SEO & Légal        | ⏸️ À venir  | 0/9        |
-| 6     | Déploiement Vercel         | ⏸️ À venir  | 0/7        |
-| 7     | Post-lancement             | ⏸️ À venir  | 0/3        |
+| Phase | Nom                        | Statut     | Avancement |
+| ----- | -------------------------- | ---------- | ---------- |
+| 0     | Setup & Fondations         | ✅ terminé | 7/7        |
+| 1     | Architecture               | ✅ Terminé | 4/4        |
+| 2     | Découpage composants       | ✅ Terminé | 11/11      |
+| 3     | Animations Framer Motion   | ✅ Terminé | 5/5        |
+| 4     | Formulaire & Server Action | ✅ Terminé | 5/5        |
+| 5     | Polish, SEO & Légal        | 🔄 À venir | 0/9        |
+| 6     | Déploiement Vercel         | ⏸️ À venir | 0/7        |
+| 7     | Post-lancement             | ⏸️ À venir | 0/3        |
 
 **Légende** : ✅ Terminée · 🔄 En cours · ⏸️ À venir · ⚠️ Bloquée
 
@@ -70,17 +70,17 @@
 
 ---
 
-## Phase 4 — Formulaire & Server Action 🔄
+## Phase 4 — Formulaire & Server Action ✅
 
 - [✅] **4.1** Création de la Server Action `sendContactForm`
 - [✅] **4.2** Setup Resend (compte + API key + domaine vérifié)
 - [✅] **4.3** Validation Zod stricte (schema-driven)
 - [✅] **4.4** Gestion des états client (loading, success, error)
-- [ ] **4.5** Email template HTML pour Resend
+- [✅] **4.5** Email template HTML pour Resend
 
 ---
 
-## Phase 5 — Polish, SEO & Légal (critique, pas bonus) ⏸️
+## Phase 5 — Polish, SEO & Légal (critique, pas bonus) 🔄
 
 - [ ] **5.1** Vérification responsive mobile (breakpoints 768px, 1024px)
 - [ ] **5.2** SEO technique : metadata, Open Graph, Twitter cards
