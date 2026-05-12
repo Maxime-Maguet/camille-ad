@@ -114,6 +114,16 @@
 
 ---
 
+## 🔧 Modifications post-lancement (quand domaine custom actif)
+
+- [ ] Mettre à jour `baseUrl` dans `lib/seo.ts` → domaine final
+- [ ] Mettre à jour l'URL dans Google Business Profile
+- [ ] Mettre à jour la propriété dans Google Search Console (nouvelle propriété avec domaine)
+- [ ] Mettre à jour `metadataBase` si nécessaire
+- [ ] Compléter `[SIRET]` dans mentions légales
+- [ ] Compléter `[ADRESSE]` dans mentions légales et politique de confidentialité
+- [ ] Valider Google Business Profile avec adresse Toulouse
+
 ## 📝 Journal de bord
 
 > Section libre pour noter décisions importantes, blocages, idées au fil du projet.
