@@ -33,7 +33,7 @@ export default function About() {
     name: string;
     role: string;
   } = {
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&q=85&auto=format&fit=crop&sat=-20",
+    img: "/images/camille-profil.jpeg",
     alt: "portrait Camille",
     name: "Camille",
     role: "Assistante de Direction · Freelance · Toulouse",
