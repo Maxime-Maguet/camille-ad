@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { baseUrl, siteName } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
-import { Playfair_Display, Instrument_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -9,17 +9,27 @@ import Nav from "@/components/sections/Nav";
 import Footer from "@/components/sections/Footer";
 import Providers from "@/components/Providers";
 
-const playfair = Playfair_Display({
+const playfair = localFont({
+  src: [
+    {
+      path: "./fonts/playfair-display-latin-wght-normal.woff2",
+      style: "normal",
+    },
+    {
+      path: "./fonts/playfair-display-latin-wght-italic.woff2",
+      style: "italic",
+    },
+  ],
   variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  style: ["normal", "italic"],
+  weight: "400 900",
+  display: "swap",
 });
 
-const instrumentSans = Instrument_Sans({
+const instrumentSans = localFont({
+  src: "./fonts/instrument-sans-latin-wght-normal.woff2",
   variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: "400 700",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
