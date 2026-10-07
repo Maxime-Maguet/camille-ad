@@ -14,7 +14,6 @@ const navItems = [
 ];
 
 export default function Nav() {
-  const [isPinned, setIsPinned] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const [activeId, setActiveId] = useState("");
@@ -30,8 +29,6 @@ export default function Nav() {
     const sectionIds = navItems.map((item) => item.href.split("#")[1]);
 
     const handleScroll = () => {
-      setIsPinned(window.scrollY > 50);
-
       const offset = 80;
       let current = "";
       for (const id of sectionIds) {
@@ -55,8 +52,7 @@ export default function Nav() {
     <nav
       aria-label="Navigation principale"
       className={cn(
-        "fixed z-300 flex items-center justify-between section-px h-16.5 transition-[background,border-color] duration-400 w-full border-b border-transparent",
-        isPinned && "bg-parch/97 backdrop-blur-md border-linen",
+        "fixed top-0 left-0 right-0 isolate z-[300] flex h-16.5 w-full items-center justify-between section-px border-b border-linen bg-parch/97 backdrop-blur-md",
       )}
     >
       <ScrollToTopLink

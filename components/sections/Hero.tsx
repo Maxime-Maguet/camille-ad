@@ -20,7 +20,7 @@ export default function Hero() {
       id="hero"
       className="lg:min-h-screen grid grid-rows-[auto_auto_auto] lg:grid-rows-[1fr_auto_auto] pt-16.5 relative overflow-hidden"
     >
-      <div className="relative flex flex-col justify-center px-5 lg:px-13 lg:pt-16.5">
+      <div className="relative flex flex-col justify-center px-5 pt-10 lg:px-13 lg:pt-16.5">
         <m.div
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +76,10 @@ export default function Hero() {
           <a href="#contact" className={ctaPrimary}>
             Réserver un appel gratuit de 30 min
           </a>
-          <a href="#prestations" className={ctaSecondary}>
+          <a
+            href="#prestations"
+            className={`${ctaSecondary} self-center lg:self-end`}
+          >
             Voir les services
           </a>
         </div>

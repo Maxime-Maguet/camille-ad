@@ -133,14 +133,14 @@ export default function RootLayout({
       lang="fr"
       className={cn(playfair.variable, instrumentSans.variable, "font-sans")}
     >
-      <body className="overflow-x-hidden">
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Providers>
           <Nav />
-          <main>{children}</main>
+          <main className="overflow-x-clip">{children}</main>
           <Footer />
         </Providers>
         <Analytics />
