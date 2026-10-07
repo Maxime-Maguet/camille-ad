@@ -4,30 +4,46 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import ScrollToTopLink from "../ui/ScrollToTopLink";
 
+/** Même ordre que les sections de la page d’accueil. */
+const navItems = [
+  { label: "Services", href: "/#prestations" },
+  { label: "Pourquoi moi", href: "/#pourquoi" },
+  { label: "Tarifs", href: "/#tarifs" },
+  { label: "À propos", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
+];
+
 export default function Nav() {
   const [isPinned, setIsPinned] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { label: "Services", href: "/#prestations" },
-    { label: "Pourquoi moi", href: "/#pourquoi" },
-    { label: "Tarifs", href: "/#tarifs" },
-    { label: "À propos", href: "/#about" },
-    { label: "Contact", href: "/#contact" },
-  ];
+  const [activeId, setActiveId] = useState("");
 
   const ctaClass =
     "text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]";
-
-  const handleScroll = () => {
-    setIsPinned(scrollY > 50);
-  };
 
   const handleClick = () => {
     setIsOpen((prev) => !prev);
   };
 
   useEffect(() => {
+    const sectionIds = navItems.map((item) => item.href.split("#")[1]);
+
+    const handleScroll = () => {
+      setIsPinned(window.scrollY > 50);
+
+      const offset = 80;
+      let current = "";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top - offset <= 0) {
+          current = id;
+        }
+      }
+      setActiveId(current);
+    };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
@@ -78,16 +94,27 @@ export default function Nav() {
         />
       </button>
       <ul className="hidden lg:flex gap-6 xl:gap-9 list-none items-center">
-        {navItems.map((item, i) => (
-          <li key={i}>
-            <Link
-              className="text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink transition-all duration-200"
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
+        {navItems.map((item) => {
+          const id = item.href.split("#")[1];
+          const isActive = activeId === id;
+          return (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => setActiveId(id)}
+                className={cn(
+                  "text-[0.73rem] font-normal tracking-[0.13em] uppercase border-b pb-0.5 transition-colors duration-200",
+                  isActive
+                    ? "text-ink border-ink"
+                    : "text-stone border-transparent hover:text-ink",
+                )}
+              >
+                {item.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
       <Link
         href="/#contact"
@@ -98,17 +125,28 @@ export default function Nav() {
       {isOpen && (
         <div className="absolute top-16.5 right-13 bg-parch border border-linen shadow-sm lg:hidden min-w-48">
           <ul className="flex flex-col">
-            {navItems.map((item, i) => (
-              <li key={i} className="border-b border-linen last:border-none">
-                <Link
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-6 py-3 text-[0.73rem] font-normal tracking-[0.13em] uppercase text-stone hover:text-ink hover:bg-sand transition-all duration-200"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const id = item.href.split("#")[1];
+              const isActive = activeId === id;
+              return (
+                <li key={item.href} className="border-b border-linen last:border-none">
+                  <Link
+                    href={item.href}
+                    onClick={() => {
+                      setActiveId(id);
+                      setIsOpen(false);
+                    }}
+                    aria-current={isActive ? "true" : undefined}
+                    className={cn(
+                      "block px-6 py-3 text-[0.73rem] font-normal tracking-[0.13em] uppercase hover:bg-sand transition-colors duration-200",
+                      isActive ? "text-ink" : "text-stone hover:text-ink",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li className="p-4">
               <Link
                 href="/#contact"

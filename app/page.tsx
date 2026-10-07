@@ -5,6 +5,7 @@ import CTAStrip from "@/components/sections/CTAStrip";
 import Hero from "@/components/sections/Hero";
 import IASection from "@/components/sections/IASection";
 import SectionPlaceholder from "@/components/sections/SectionPlaceholder";
+import Preuve from "@/components/sections/Preuve";
 import Services from "@/components/sections/Services";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
+      <Preuve />
       <SectionPlaceholder
         id="pourquoi"
         label="Pourquoi moi"
