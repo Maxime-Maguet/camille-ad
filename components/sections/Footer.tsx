@@ -2,9 +2,10 @@ import Link from "next/link";
 import ScrollToTopLink from "../ui/ScrollToTopLink";
 export default function Footer() {
   const items: { label: string; href: string }[] = [
+    { label: "Services", href: "/#prestations" },
+    { label: "Pourquoi moi", href: "/#pourquoi" },
+    { label: "Tarifs", href: "/#tarifs" },
     { label: "À propos", href: "/#about" },
-    { label: "Prestations", href: "/#prestations" },
-    { label: "IA & Entreprises", href: "/#ia" },
     { label: "Contact", href: "/#contact" },
   ];
 
@@ -25,7 +26,7 @@ export default function Footer() {
       </div>
 
       <nav aria-label="Navigation pied de page">
-        <ul className="flex gap-7">
+        <ul className="flex flex-wrap gap-x-7 gap-y-2">
           {items.map((item, i) => (
             <li key={i}>
               <Link

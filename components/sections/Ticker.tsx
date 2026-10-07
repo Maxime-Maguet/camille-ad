@@ -1,15 +1,14 @@
 export default function Ticker() {
   const TICKER_ITEMS = [
+    "Secrétariat",
     "Gestion RH",
     "Paie Silae",
-    "CCN Propreté",
-    "Chorus Pro",
-    "Accompagnement IA",
-    "Rapprochement bancaire",
-    "Planning & Exploitation",
+    "DPAE & Contrats",
+    "Facturation",
     "Relances clients",
-    "Toulouse & périphérie",
-    "Freelance · Disponible",
+    "Rapprochement bancaire",
+    "Chorus Pro",
+    "Planning",
   ];
 
   return (

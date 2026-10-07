@@ -9,11 +9,15 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { label: "Services", href: "/#prestations" },
+    { label: "Pourquoi moi", href: "/#pourquoi" },
+    { label: "Tarifs", href: "/#tarifs" },
     { label: "À propos", href: "/#about" },
-    { label: "Prestations", href: "/#prestations" },
-    { label: "IA & Entreprises", href: "/#ia" },
     { label: "Contact", href: "/#contact" },
   ];
+
+  const ctaClass =
+    "text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]";
 
   const handleScroll = () => {
     setIsPinned(scrollY > 50);
@@ -45,7 +49,7 @@ export default function Nav() {
       >
         Camille
         <span className="block font-sans text-[0.6rem] font-normal tracking-[0.22em] uppercase text-stone -mt-0.5">
-          Assistante de Direction
+          Assistante administrative
         </span>
       </ScrollToTopLink>
 
@@ -73,7 +77,7 @@ export default function Nav() {
           )}
         />
       </button>
-      <ul className="hidden lg:flex gap-9 list-none items-center">
+      <ul className="hidden lg:flex gap-6 xl:gap-9 list-none items-center">
         {navItems.map((item, i) => (
           <li key={i}>
             <Link
@@ -87,9 +91,9 @@ export default function Nav() {
       </ul>
       <Link
         href="/#contact"
-        className="hidden lg:block text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink py-2.5 px-6 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-250"
+        className={cn("hidden lg:block py-2.5 px-6", ctaClass)}
       >
-        Me contacter
+        Réserver un appel
       </Link>
       {isOpen && (
         <div className="absolute top-16.5 right-13 bg-parch border border-linen shadow-sm lg:hidden min-w-48">
@@ -109,9 +113,9 @@ export default function Nav() {
               <Link
                 href="/#contact"
                 onClick={() => setIsOpen(false)}
-                className="block text-center text-[0.72rem] font-medium tracking-widest uppercase text-white bg-ink py-2.5 px-4 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-colors duration-250"
+                className={cn("block text-center py-2.5 px-4", ctaClass)}
               >
-                Me contacter
+                Réserver un appel
               </Link>
             </li>
           </ul>

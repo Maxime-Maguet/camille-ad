@@ -14,45 +14,53 @@ export default function Services() {
     list: string[];
   }[] = [
     {
-      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop",
-      alt: "Consultante travaillant sur des dossiers de ressources humaines",
+      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80&auto=format&fit=crop",
+      alt: "Organisation administrative et suivi du quotidien en entreprise",
       num: "01",
-      title: "Ressources Humaines",
-      desc: "Gestion complète du personnel avec maîtrise totale de la convention collective propreté et des outils métier.",
+      title: "Gestion administrative & secrétariat",
+      desc: "Pour les dirigeants débordés par les mails, les devis et le suivi du quotidien.",
       list: [
-        "DPAE, contrats, avenants",
-        "Paie sur Silae",
-        "Congés, absences, visites médicales",
-        "CCN Propreté & services associés",
-        "Disciplinaire, ruptures conventionnelles",
+        "Gestion des emails, de l'agenda et des prises de rendez-vous",
+        "Rédaction de courriers, comptes rendus, procédures",
+        "Classement et archivage, papier et numérique",
+        "Devis, bons de commande, suivi fournisseurs et matériel",
+        "Planning des équipes, dispatch, suivi des chantiers",
+        "Suivi clients et tableaux de bord",
+        "Montage administratif des appels d'offres",
+      ],
+    },
+    {
+      img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop",
+      alt: "Dossiers de ressources humaines et contrats de travail",
+      num: "02",
+      title: "Ressources humaines & paie",
+      desc: "Pour les entreprises sans service RH, où le dirigeant fait la paie le soir.",
+      list: [
+        "DPAE, contrats de travail, avenants",
+        "Éléments variables et saisie de la paie sur Silae",
+        "Congés, absences, arrêts maladie, visites médicales",
+        "Registre unique du personnel et dossiers salariés",
+        "Affiliations mutuelle et prévoyance",
+        "Documents d'entrée et de sortie des salariés",
+        "Application de votre convention collective",
+        "Suivi administratif des procédures (disciplinaire, rupture conventionnelle)",
       ],
     },
     {
       img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&auto=format&fit=crop",
-      alt: "Graphiques financiers et gestion comptable sur un écran",
-      num: "02",
-      title: "Comptabilité & Gestion",
-      desc: "Du quotidien comptable à la facturation marchés publics. Relances, paiements fournisseurs, Chorus Pro.",
-      list: [
-        "Saisie & rapprochement bancaire",
-        "Facturation & relances clients",
-        "Paiements fournisseurs",
-        "Dépôt Chorus Pro",
-        "Appels d'offres, devis",
-      ],
-    },
-    {
-      img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80&auto=format&fit=crop",
-      alt: "Collaboration d'équipe optimisée par des outils numériques",
+      alt: "Facturation et suivi comptable sur un écran",
       num: "03",
-      title: "Administration & IA",
-      desc: "Gestion opérationnelle et déploiement concret de l'intelligence artificielle dans vos process internes.",
+      title: "Pré-comptabilité & facturation",
+      desc: "Pour les entreprises qui veulent être payées à temps et transmettre un dossier propre à leur expert-comptable.",
       list: [
-        "Planning, dispatch, chantiers",
-        "Suivi clients & reporting",
-        "Audit process & gains IA",
-        "Déploiement outils IA adaptés",
-        "Formation des équipes",
+        "Saisie des factures clients et fournisseurs",
+        "Rapprochement bancaire",
+        "Préparation des paiements fournisseurs",
+        "Facturation clients et relances des impayés",
+        "Dépôt des factures sur Chorus Pro",
+        "Classement des pièces et transmission à l'expert-comptable",
+        "Tableau de suivi de trésorerie",
+        "Je prépare un dossier propre à l'expert-comptable, je ne le remplace pas",
       ],
     },
   ];
@@ -85,13 +93,13 @@ export default function Services() {
         }
       >
         <SectionHeader
-          label={`Prestations`}
+          label={`Services`}
           title={`Trois pôles.`}
           subtitle={`Une seule interlocutrice.`}
         />
         <p className="text-[0.95rem]/[1.85] font-light text-stone">
-          Sur mesure — ponctuel, mensuel ou long terme. Pas de forfait rigide,
-          juste ce dont vous avez besoin.
+          Ponctuel ou mensuel, à distance ou sur site. Vous me confiez ce qui
+          vous prend du temps.
         </p>
       </Reveal>
 
