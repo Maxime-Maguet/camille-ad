@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { baseUrl, siteName } from "@/lib/seo";
+import {
+  baseUrl,
+  siteDescription,
+  siteName,
+  siteTitle,
+} from "@/lib/seo";
+import { faqItems } from "@/lib/content/tarifs";
 import { Analytics } from "@vercel/analytics/next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -36,14 +42,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     template: `%s | ${siteName}`,
-    default: "Camille AD — Assistante de Direction Freelance Toulouse",
+    default: siteTitle,
   },
-  description:
-    "Assistante de direction freelance spécialisée secteur propreté à Toulouse. Externalisation RH, paie, comptabilité et accompagnement IA. TPE/PME 30–100 salariés.",
+  description: siteDescription,
   openGraph: {
-    title: "Camille AD — Assistante de Direction Freelance Toulouse",
-    description:
-      "Externalisation RH, comptabilité et accompagnement IA pour les entreprises du secteur propreté. Toulouse et périphérie.",
+    title: siteTitle,
+    description: siteDescription,
     url: baseUrl,
     siteName,
     locale: "fr_FR",
@@ -53,15 +57,14 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Camille AD — Assistante de Direction Freelance Toulouse",
+        alt: "Camille — Assistante administrative freelance en Haute-Garonne et dans le Tarn",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Camille AD — Assistante de Direction Freelance Toulouse",
-    description:
-      "Externalisation RH, comptabilité et accompagnement IA pour les entreprises du secteur propreté. Toulouse et périphérie.",
+    title: siteTitle,
+    description: siteDescription,
     images: ["/og-image.png"],
   },
   alternates: {
@@ -83,45 +86,45 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const professionalServiceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "@id": `${baseUrl}/#business`,
-  name: "Camille AD",
+  name: "Camille Maguet",
   url: baseUrl,
   image: `${baseUrl}/og-image.png`,
-  description:
-    "Assistante de direction freelance spécialisée dans le secteur de la propreté à Toulouse. Externalisation RH, paie, comptabilité et accompagnement IA pour TPE/PME.",
-  telephone: "+33638376182",
-  email: "camille.mcofficemanager@gmail.com",
+  description: siteDescription,
+  email: "camille.maguet.assist@outlook.fr",
   priceRange: "€€",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Toulouse",
-    addressRegion: "Occitanie",
-    postalCode: "31000",
-    addressCountry: "FR",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 43.6047,
-    longitude: 1.4442,
-  },
-  areaServed: {
-    "@type": "GeoCircle",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: 43.6047,
-      longitude: 1.4442,
-    },
-    geoRadius: "50000",
-  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Haute-Garonne" },
+    { "@type": "AdministrativeArea", name: "Tarn" },
+  ],
   serviceType: [
-    "Administration et ressources humaines",
-    "Comptabilité et facturation",
-    "Accompagnement intelligence artificielle",
+    "Secrétariat",
+    "RH",
+    "Paie Silae",
+    "Pré-comptabilité",
+    "Facturation et relances",
   ],
 };
+
+const faqPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
+
+function jsonLdScript(jsonLd: object) {
+  return JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+}
 
 export default function RootLayout({
   children,
@@ -136,7 +139,15 @@ export default function RootLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(professionalServiceJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(faqPageJsonLd),
+          }}
         />
         <Providers>
           <Nav />

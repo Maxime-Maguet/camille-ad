@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
+  alternates: { canonical: "/politique-confidentialite" },
   robots: { index: false, follow: false },
 };
 
+const contactEmail = "camille.maguet.assist@outlook.fr";
+
 export default function PolitiqueConfidentialite() {
   return (
-    <main className="px-13 py-25 max-w-3xl mx-auto">
+    <article className="px-13 py-25 max-w-3xl mx-auto">
       <h1 className="font-display text-[2.5rem] font-bold text-ink mb-12 tracking-[-0.02em]">
         Politique de confidentialité
       </h1>
@@ -23,11 +26,11 @@ export default function PolitiqueConfidentialite() {
           </p>
           <p>
             <strong className="text-bark font-medium">Email :</strong>{" "}
-            camille.mcofficemanager@gmail.com
+            {contactEmail}
           </p>
           <p>
-            <strong className="text-bark font-medium">Adresse :</strong> [À
-            COMPLÉTER — adresse de domiciliation Toulouse]
+            <strong className="text-bark font-medium">Adresse :</strong> [A
+            COMPLETER — adresse de domiciliation]
           </p>
         </div>
       </section>
@@ -41,15 +44,18 @@ export default function PolitiqueConfidentialite() {
           collectées :
         </p>
         <ul className="flex flex-col gap-2 text-[0.95rem]/[1.85] font-light text-stone">
-          <li className="pl-4 border-l-2 border-linen">Prénom et nom</li>
+          <li className="pl-4 border-l-2 border-linen">Nom</li>
+          <li className="pl-4 border-l-2 border-linen">Entreprise</li>
+          <li className="pl-4 border-l-2 border-linen">Email</li>
           <li className="pl-4 border-l-2 border-linen">
-            Nom de l&apos;entreprise
+            Téléphone (optionnel)
           </li>
-          <li className="pl-4 border-l-2 border-linen">Adresse email</li>
-          <li className="pl-4 border-l-2 border-linen">Numéro de téléphone</li>
           <li className="pl-4 border-l-2 border-linen">
-            Message et nature du besoin
+            Taille de l&apos;entreprise
           </li>
+          <li className="pl-4 border-l-2 border-linen">Besoin</li>
+          <li className="pl-4 border-l-2 border-linen">Message</li>
+          <li className="pl-4 border-l-2 border-linen">Formule</li>
         </ul>
       </section>
 
@@ -58,9 +64,9 @@ export default function PolitiqueConfidentialite() {
           Finalité du traitement
         </h2>
         <p className="text-[0.95rem]/[1.85] font-light text-stone">
-          Les données collectées sont utilisées uniquement pour répondre aux
-          demandes de contact et établir une relation commerciale. Elles ne sont
-          ni vendues, ni transmises à des tiers.
+          Les données collectées sont utilisées uniquement pour répondre à la
+          demande. Elles ne sont ni vendues, ni transmises à des tiers à des
+          fins commerciales.
         </p>
       </section>
 
@@ -90,15 +96,19 @@ export default function PolitiqueConfidentialite() {
             <strong className="text-bark font-medium">
               Envoi d&apos;emails :
             </strong>{" "}
-            Les messages sont transmis via Resend et reçus sur Gmail (Google
-            LLC). Google est soumis au RGPD via ses clauses contractuelles
-            types.
+            Les messages sont transmis via Resend et reçus sur Outlook. Resend
+            est soumis au RGPD.
+          </p>
+          <p>
+            <strong className="text-bark font-medium">Prise de rendez-vous :</strong>{" "}
+            Calendly, pour planifier un appel découverte.
           </p>
           <p>
             <strong className="text-bark font-medium">Analytics :</strong>{" "}
-            Vercel Analytics collecte des données de navigation anonymisées
-            (pages visitées, pays, type d&apos;appareil). Aucun cookie
-            n&apos;est déposé, aucune donnée personnelle n&apos;est collectée.
+            Vercel Web Analytics collecte des données de navigation
+            anonymisées (pages visitées, pays, type d&apos;appareil). Aucun
+            cookie n&apos;est déposé, aucun bandeau de consentement n&apos;est
+            requis.
           </p>
         </div>
       </section>
@@ -109,7 +119,7 @@ export default function PolitiqueConfidentialite() {
         </h2>
         <p className="text-[0.95rem]/[1.85] font-light text-stone">
           Ce site n&apos;utilise pas de cookies de traçage ou publicitaires.
-          Vercel Analytics fonctionne sans cookies. Aucun bandeau de
+          Vercel Web Analytics fonctionne sans cookies. Aucun bandeau de
           consentement n&apos;est requis.
         </p>
       </section>
@@ -140,10 +150,10 @@ export default function PolitiqueConfidentialite() {
         <p className="text-[0.95rem]/[1.85] font-light text-stone mt-4">
           Pour exercer ces droits, contactez :{" "}
           <a
-            href="mailto:camille.mcofficemanager@gmail.com"
+            href={`mailto:${contactEmail}`}
             className="text-bark hover:text-ink transition-colors"
           >
-            camille.mcofficemanager@gmail.com
+            {contactEmail}
           </a>
         </p>
         <p className="text-[0.95rem]/[1.85] font-light text-stone mt-2">
@@ -165,9 +175,9 @@ export default function PolitiqueConfidentialite() {
           Mise à jour
         </h2>
         <p className="text-[0.95rem]/[1.85] font-light text-stone">
-          Politique mise à jour le 11 mai 2026.
+          Politique mise à jour le 8 octobre 2026.
         </p>
       </section>
-    </main>
+    </article>
   );
 }

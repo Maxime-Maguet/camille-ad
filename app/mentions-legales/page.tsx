@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Mentions légales",
+  alternates: { canonical: "/mentions-legales" },
   robots: { index: false, follow: false },
 };
 
+const contactEmail = "camille.maguet.assist@outlook.fr";
+
 export default function MentionsLegales() {
   return (
-    <main className="px-13 py-25 max-w-3xl mx-auto">
+    <article className="px-13 py-25 max-w-3xl mx-auto">
       <h1 className="font-display text-[2.5rem] font-bold text-ink mb-12 tracking-[-0.02em]">
         Mentions légales
       </h1>
@@ -23,23 +26,33 @@ export default function MentionsLegales() {
           </p>
           <p>
             <strong className="text-bark font-medium">Activité :</strong>{" "}
-            Assistante de Direction Freelance
+            Assistante administrative freelance
           </p>
           <p>
             <strong className="text-bark font-medium">Statut :</strong>{" "}
-            Micro-entreprise (Auto-entrepreneur)
+            Micro-entrepreneur / micro-entreprise
           </p>
           <p>
-            <strong className="text-bark font-medium">Adresse :</strong> [À
-            COMPLÉTER — adresse de domiciliation Toulouse]
+            <strong className="text-bark font-medium">SIRET :</strong>{" "}
+            90405294100021
+          </p>
+          <p>
+            <strong className="text-bark font-medium">TVA :</strong> TVA non
+            applicable, art. 293 B du CGI
+          </p>
+          <p>
+            <strong className="text-bark font-medium">Adresse :</strong> [A
+            COMPLETER — adresse de domiciliation]
           </p>
           <p>
             <strong className="text-bark font-medium">Email :</strong>{" "}
-            camille.mcofficemanager@gmail.com
+            {contactEmail}
           </p>
           <p>
-            <strong className="text-bark font-medium">SIRET :</strong> [À
-            COMPLÉTER]
+            <strong className="text-bark font-medium">
+              Directrice de publication :
+            </strong>{" "}
+            MAGUET Camille
           </p>
         </div>
       </section>
@@ -94,13 +107,13 @@ export default function MentionsLegales() {
         <p className="text-[0.95rem]/[1.85] font-light text-stone">
           Pour toute question relative au site :{" "}
           <a
-            href="mailto:camille.mcofficemanager@gmail.com"
+            href={`mailto:${contactEmail}`}
             className="text-bark hover:text-ink transition-colors"
           >
-            camille.mcofficemanager@gmail.com
+            {contactEmail}
           </a>
         </p>
       </section>
-    </main>
+    </article>
   );
 }

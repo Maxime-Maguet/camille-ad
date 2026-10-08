@@ -17,20 +17,29 @@ export async function sendContactForm(data: ContactFormData) {
     const [internalResult, confirmationResult] = await Promise.all([
       // Email interne — vers Camille
       resend.emails.send({
-        from: "MC Office Manager <onboarding@resend.dev>",
+        from: "Camille Maguet <onboarding@resend.dev>",
         to: ["camille.maguet.assist@outlook.fr"],
         subject: `Nouvelle demande — ${result.data.besoin}`,
         html: getInternalEmailHtml(result.data),
         replyTo: result.data.email,
       }),
-      // Email de confirmation — vers le client
+      // Email de confirmation — vers le prospect
       resend.emails.send({
         from: "Camille Maguet <onboarding@resend.dev>",
-        to: ["camille.mcofficemanager@gmail.com"], // à modifier quand on aura le nom de domaine vérifié sur resend
+        to: [result.data.email],
         subject: "Votre message a bien été reçu",
         html: getConfirmationEmailHtml(result.data),
       }),
     ]);
+
+    if (internalResult.error || confirmationResult.error) {
+      console.error("Erreur envoi email :", {
+        internal: internalResult.error,
+        confirmation: confirmationResult.error,
+      });
+      return { success: false, message: "Erreur lors de l'envoi. Réessayez" };
+    }
+
     console.log("Resend results :", internalResult, confirmationResult);
     return { success: true, message: "Message envoyé avec succès" };
   } catch (error: unknown) {
