@@ -18,7 +18,7 @@ export async function sendContactForm(data: ContactFormData) {
       // Email interne — vers Camille
       resend.emails.send({
         from: "MC Office Manager <onboarding@resend.dev>",
-        to: ["camille.mcofficemanager@gmail.com"],
+        to: ["camille.maguet.assist@outlook.fr"],
         subject: `Nouvelle demande — ${result.data.besoin}`,
         html: getInternalEmailHtml(result.data),
         replyTo: result.data.email,

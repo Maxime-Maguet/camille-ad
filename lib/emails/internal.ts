@@ -53,9 +53,31 @@ export function getInternalEmailHtml(data: ContactFormData): string {
                   <tr>
                     <td style="padding: 8px 0; font-size: 14px; color: #1a1a1a;">
                       <strong style="color: #8a8275; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Téléphone :</strong><br />
-                      <a href="tel:${escapeHtml(data.telephone)}" style="color: #1a1a1a; text-decoration: underline;">${escapeHtml(data.telephone)}</a>
+                      ${data.telephone
+                        ? `<a href="tel:${escapeHtml(data.telephone)}" style="color: #1a1a1a; text-decoration: underline;">${escapeHtml(data.telephone)}</a>`
+                        : "—"}
                     </td>
                   </tr>
+                  ${
+                    data.taille
+                      ? `<tr>
+                    <td style="padding: 8px 0; font-size: 14px; color: #1a1a1a;">
+                      <strong style="color: #8a8275; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Taille :</strong><br />
+                      ${escapeHtml(data.taille)}
+                    </td>
+                  </tr>`
+                      : ""
+                  }
+                  ${
+                    data.formule
+                      ? `<tr>
+                    <td style="padding: 8px 0; font-size: 14px; color: #1a1a1a;">
+                      <strong style="color: #8a8275; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;">Formule :</strong><br />
+                      ${escapeHtml(data.formule)}
+                    </td>
+                  </tr>`
+                      : ""
+                  }
                 </table>
               </td>
             </tr>

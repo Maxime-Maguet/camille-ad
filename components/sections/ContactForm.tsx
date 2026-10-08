@@ -13,29 +13,37 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { ContactFormData } from "@/lib/schemas/contact";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import {
+  besoinOptions,
+  ContactFormData,
+  tailleOptions,
+} from "@/lib/schemas/contact";
 import { sendContactForm } from "@/actions/sendContactForm";
 import SuccessMessage from "../contact/SuccessMessage";
-
-const items = [
-  { label: "Ressources Humaines & Paie", value: "Ressources Humaines & Paie" },
-  { label: "Comptabilité & Facturation", value: "Comptabilité & Facturation" },
-  {
-    label: "Administration & Exploitation",
-    value: "Administration & Exploitation",
-  },
-  { label: "Accompagnement IA", value: "Accompagnement IA" },
-  { label: "Plusieurs prestations", value: "Plusieurs prestations" },
-];
+import {
+  parseFormuleParam,
+  resolveCalendlyCta,
+} from "@/lib/content/calendly";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
+type ContactFormState = Omit<ContactFormData, "besoin"> & {
+  besoin: ContactFormData["besoin"] | "";
+};
+
 export default function ContactForm() {
-  const [formData, setFormData] = useState<ContactFormData>({
+  const searchParams = useSearchParams();
+  const formule = parseFormuleParam(searchParams.get("formule"));
+
+  const [formData, setFormData] = useState<ContactFormState>({
     nom: "",
     entreprise: "",
     email: "",
     telephone: "",
+    taille: "",
+    formule: "",
     besoin: "",
     message: "",
     honeypot: "",
@@ -50,11 +58,18 @@ export default function ContactForm() {
       formData.message === "" ||
       formData.nom === "" ||
       formData.entreprise === "" ||
-      formData.telephone === ""
-    )
-      return setStatus("error");
+      formData.email === ""
+    ) {
+      setStatus("error");
+      return;
+    }
     setStatus("loading");
-    const result = await sendContactForm(formData);
+    const payload: ContactFormData = {
+      ...formData,
+      besoin: formData.besoin,
+      formule,
+    };
+    const result = await sendContactForm(payload);
     if (result.success) {
       setStatus("success");
     } else {
@@ -68,10 +83,12 @@ export default function ContactForm() {
   const labelClass =
     "text-[0.62rem] font-medium tracking-[0.16em] uppercase text-stone";
 
+  const calendlyHref = resolveCalendlyCta(formule);
+
   return (
     <AnimatePresence mode="wait">
       {status === "success" ? (
-        <SuccessMessage key="success" />
+        <SuccessMessage key="success" calendlyHref={calendlyHref} />
       ) : (
         <m.form
           key="form"
@@ -81,11 +98,12 @@ export default function ContactForm() {
           className="flex flex-col gap-3.5 lg:pl-20 pt-0"
           aria-label="Formulaire de contact"
           noValidate
+          data-formule={formule || undefined}
         >
           <div className="grid grid-cols-2 gap-3.5">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="nom" className={labelClass}>
-                Prénom & Nom
+                Prénom & nom *
               </Label>
               <Input
                 id="nom"
@@ -97,11 +115,13 @@ export default function ContactForm() {
                   setFormData({ ...formData, nom: e.target.value })
                 }
                 autoComplete="name"
+                required
+                aria-required="true"
               />
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="entreprise" className={labelClass}>
-                Entreprise
+                Entreprise *
               </Label>
               <Input
                 id="entreprise"
@@ -113,6 +133,8 @@ export default function ContactForm() {
                   setFormData({ ...formData, entreprise: e.target.value })
                 }
                 autoComplete="organization"
+                required
+                aria-required="true"
               />
             </div>
           </div>
@@ -120,7 +142,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-2 gap-3.5">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="email" className={labelClass}>
-                Email
+                Email *
               </Label>
               <Input
                 id="email"
@@ -132,6 +154,8 @@ export default function ContactForm() {
                   setFormData({ ...formData, email: e.target.value })
                 }
                 autoComplete="email"
+                required
+                aria-required="true"
               />
             </div>
             <div className="flex flex-col gap-1.5">
@@ -142,7 +166,6 @@ export default function ContactForm() {
                 id="telephone"
                 type="tel"
                 placeholder="06 00 00 00 00"
-                pattern="[0-9]{10}"
                 className={inputClass}
                 value={formData.telephone}
                 onChange={(e) =>
@@ -154,37 +177,74 @@ export default function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="besoin" className={labelClass}>
-              Besoin
+            <Label htmlFor="taille" className={labelClass}>
+              Taille
             </Label>
             <Select
-              defaultValue=""
-              value={formData.besoin}
+              value={formData.taille || null}
               onValueChange={(value) =>
-                setFormData({ ...formData, besoin: value ?? "" })
+                setFormData({
+                  ...formData,
+                  taille: (value ?? "") as ContactFormData["taille"],
+                })
               }
             >
               <SelectTrigger
-                id="besoin"
+                id="taille"
                 className="w-full h-auto rounded-none border-linen py-3.25 px-4 text-[0.88rem] font-light focus:ring-0 focus:border-bark bg-white"
               >
-                <SelectValue placeholder="Choisir un pôle..." />
+                <SelectValue placeholder="Effectif de l’entreprise…" />
               </SelectTrigger>
               <SelectContent
                 alignItemWithTrigger={false}
                 className="rounded-none border-linen"
               >
                 <SelectGroup>
-                  <SelectItem value="" disabled className="text-[#9ca3af]">
-                    Choisir un pôle…
-                  </SelectItem>
-                  {items.map((item) => (
+                  {tailleOptions.map((item) => (
                     <SelectItem
-                      key={item.value}
-                      value={item.value}
+                      key={item}
+                      value={item}
                       className="text-[0.88rem] font-light text-ink rounded-none focus:bg-sand focus:text-ink"
                     >
-                      {item.label}
+                      {item}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="besoin" className={labelClass}>
+              Besoin *
+            </Label>
+            <Select
+              value={formData.besoin || null}
+              onValueChange={(value) =>
+                setFormData({
+                  ...formData,
+                  besoin: (value ?? "") as ContactFormData["besoin"],
+                })
+              }
+            >
+              <SelectTrigger
+                id="besoin"
+                className="w-full h-auto rounded-none border-linen py-3.25 px-4 text-[0.88rem] font-light focus:ring-0 focus:border-bark bg-white"
+              >
+                <SelectValue placeholder="Choisir un besoin…" />
+              </SelectTrigger>
+              <SelectContent
+                alignItemWithTrigger={false}
+                className="rounded-none border-linen"
+              >
+                <SelectGroup>
+                  {besoinOptions.map((item) => (
+                    <SelectItem
+                      key={item}
+                      value={item}
+                      className="text-[0.88rem] font-light text-ink rounded-none focus:bg-sand focus:text-ink"
+                    >
+                      {item}
                     </SelectItem>
                   ))}
                 </SelectGroup>
@@ -194,7 +254,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="message" className={labelClass}>
-              Message
+              Message *
             </Label>
             <Textarea
               id="message"
@@ -204,10 +264,11 @@ export default function ContactForm() {
               onChange={(e) =>
                 setFormData({ ...formData, message: e.target.value })
               }
+              required
+              aria-required="true"
             />
           </div>
 
-          {/* Honeypot anti-bot */}
           <input
             type="text"
             value={formData.honeypot}
@@ -224,10 +285,21 @@ export default function ContactForm() {
             type="submit"
             disabled={status === "loading"}
             aria-disabled={status === "loading"}
-            className="text-[0.75rem] font-medium tracking-widest uppercase text-white bg-ink py-3.75 px-8 border-[1.5px] border-ink hover:bg-transparent hover:text-ink transition-all duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
+            className="cursor-pointer text-[0.75rem] font-medium tracking-widest uppercase text-white bg-ink py-3.75 px-8 border-[1.5px] border-ink hover-hover:hover:bg-transparent hover-hover:hover:text-ink transition-all duration-300 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "loading" ? "Envoi en cours..." : "Envoyer le message"}
           </button>
+          <p className="text-[0.72rem] font-light leading-relaxed text-stone">
+            En envoyant ce formulaire, vous acceptez que vos données soient
+            utilisées pour vous recontacter. Voir la{" "}
+            <Link
+              href="/politique-confidentialite"
+              className="underline text-bark hover-hover:hover:text-ink"
+            >
+              politique de confidentialité
+            </Link>
+            .
+          </p>
 
           {status === "error" && (
             <p
