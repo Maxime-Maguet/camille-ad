@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant hover-hover (@media (hover: hover));
 
 :root {
   --white: #fdfcf9;

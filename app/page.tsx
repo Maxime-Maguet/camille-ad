@@ -5,9 +5,9 @@ import CTAStrip from "@/components/sections/CTAStrip";
 import Hero from "@/components/sections/Hero";
 import IASection from "@/components/sections/IASection";
 import Pourquoi from "@/components/sections/Pourquoi";
-import SectionPlaceholder from "@/components/sections/SectionPlaceholder";
 import Preuve from "@/components/sections/Preuve";
 import Services from "@/components/sections/Services";
+import Tarifs from "@/components/sections/Tarifs";
 
 export default function Home() {
   return (
@@ -17,12 +17,7 @@ export default function Home() {
       <Services />
       <Preuve />
       <Pourquoi />
-      <SectionPlaceholder
-        id="tarifs"
-        label="Tarifs"
-        title="Des tarifs clairs,"
-        subtitle="sans engagement."
-      />
+      <Tarifs />
       <Band />
       <IASection />
       <CTAStrip />
