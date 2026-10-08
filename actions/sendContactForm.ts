@@ -32,12 +32,16 @@ export async function sendContactForm(data: ContactFormData) {
       }),
     ]);
 
-    if (internalResult.error || confirmationResult.error) {
+    if (internalResult.error) {
       console.error("Erreur envoi email :", {
         internal: internalResult.error,
         confirmation: confirmationResult.error,
       });
       return { success: false, message: "Erreur lors de l'envoi. Réessayez" };
+    }
+
+    if (confirmationResult.error) {
+      console.error("Accusé Resend non envoyé :", confirmationResult.error);
     }
 
     console.log("Resend results :", internalResult, confirmationResult);

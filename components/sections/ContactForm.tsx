@@ -50,6 +50,9 @@ export default function ContactForm() {
   });
 
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState(
+    "Formulaire invalide. Vérifiez vos informations.",
+  );
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
@@ -60,6 +63,7 @@ export default function ContactForm() {
       formData.entreprise === "" ||
       formData.email === ""
     ) {
+      setErrorMessage("Formulaire invalide. Vérifiez vos informations.");
       setStatus("error");
       return;
     }
@@ -73,6 +77,9 @@ export default function ContactForm() {
     if (result.success) {
       setStatus("success");
     } else {
+      setErrorMessage(
+        result.message || "Erreur lors de l'envoi. Réessayez",
+      );
       setStatus("error");
     }
   };
@@ -306,7 +313,7 @@ export default function ContactForm() {
               role="alert"
               className="text-[0.75rem] font-medium tracking-wide text-red-700"
             >
-              Formulaire invalide. Vérifiez vos informations.
+              {errorMessage}
             </p>
           )}
         </m.form>
